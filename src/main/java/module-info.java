@@ -5,4 +5,6 @@ module com.example.personal {
 
     opens com.example.personal to javafx.fxml;
     exports com.example.personal;
+    exports com.example.personal.BasicClass;
+    opens com.example.personal.BasicClass to javafx.fxml;
 }

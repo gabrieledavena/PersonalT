@@ -1,33 +1,28 @@
-package com.nbicocchi.javafx.address;
+package com.example.personal.BasicClass;
 
 import javafx.beans.property.*;
+import javafx.scene.layout.BorderPane;
 
 import java.time.LocalDate;
 
 public class Person {
-    private final StringProperty firstName;
+    private final StringProperty firstName ;
     private final StringProperty lastName;
     private final StringProperty street;
+    private final StringProperty gender;
     private final IntegerProperty postalCode;
     private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
 
-    public Person(String firstName, String lastName, String street, Integer postalCode, String city, LocalDate birthDay) {
+
+    public Person(String firstName, String lastName, String street, String gender, int postalCode, String city, LocalDate birthday) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.street = new SimpleStringProperty(street);
+        this.gender = new SimpleStringProperty(gender);
         this.postalCode = new SimpleIntegerProperty(postalCode);
         this.city = new SimpleStringProperty(city);
-        this.birthday = new SimpleObjectProperty<>(birthDay);
-    }
-
-    public Person(Person other) {
-        this.firstName = new SimpleStringProperty(other.getFirstName());
-        this.lastName = new SimpleStringProperty(other.getLastName());
-        this.street = new SimpleStringProperty(other.getStreet());
-        this.postalCode = new SimpleIntegerProperty(other.getPostalCode());
-        this.city = new SimpleStringProperty(other.getCity());
-        this.birthday = new SimpleObjectProperty<>(other.getBirthday());
+        this.birthday = new SimpleObjectProperty<>(birthday);
     }
 
     public String getFirstName() {
@@ -60,6 +55,18 @@ public class Person {
 
     public void setStreet(String street) {
         this.street.set(street);
+    }
+
+    public String getGender() {
+        return gender.get();
+    }
+
+    public StringProperty genderProperty() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender.set(gender);
     }
 
     public StringProperty streetProperty() {
