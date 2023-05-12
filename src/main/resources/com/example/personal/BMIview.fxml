@@ -51,18 +51,27 @@
             <Button layoutX="361.0" layoutY="142.0" mnemonicParsing="false" onAction="#weightminus" prefHeight="32.0" prefWidth="33.0" text="-" />
             <Button layoutX="442.0" layoutY="65.0" mnemonicParsing="false" onAction="#heightplus" prefHeight="32.0" prefWidth="33.0" text="+" />
             <Button layoutX="361.0" layoutY="65.0" mnemonicParsing="false" onAction="#heightminus" prefHeight="32.0" prefWidth="33.0" text="-" />
-            <Label layoutX="198.0" layoutY="258.0" text="BMI">
+            <Label layoutX="198.0" layoutY="209.0" text="BMI">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="BMILabel" alignment="CENTER" layoutX="324.0" layoutY="258.0" prefHeight="26.0" prefWidth="74.0" text="Label">
+            <Label fx:id="BMILabel" alignment="CENTER" layoutX="340.0" layoutY="209.0" prefHeight="26.0" prefWidth="74.0" text="Label">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button layoutX="200.0" layoutY="213.0" mnemonicParsing="false" prefWidth="200.0" text="CALCOLA" />
             <ProgressBar layoutX="175.0" layoutY="331.0" prefHeight="20.0" prefWidth="250.0" progress="0.0" />
+            <Label layoutX="114.0" layoutY="268.0" text="Per arrivare al normopeso:">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="goalLabel" layoutX="357.0" layoutY="268.0" text="Label">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

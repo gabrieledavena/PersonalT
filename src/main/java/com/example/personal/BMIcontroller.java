@@ -15,6 +15,9 @@ public class BMIcontroller {
     @FXML
     private Label weightLabel;
 
+    @FXML
+    private Label goalLabel;
+
     BMI bmi=new BMI(185, 70);
 
 
@@ -31,6 +34,7 @@ public class BMIcontroller {
             heightLabel.setText(String.valueOf(bmi.getHeight()));
             weightLabel.setText(String.valueOf(bmi.getWeight()));
             BMILabel.setText(String.valueOf(bmi.getBMIvalue()));
+            goalLabel.setText(String.valueOf(bmi.getGoal())+ " kg");
         }
     }
 

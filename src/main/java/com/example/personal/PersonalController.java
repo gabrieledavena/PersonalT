@@ -94,7 +94,6 @@ public class PersonalController {
 
         BorderPane view = FXMLLoader.load(getClass().getResource("BMIview.fxml"));
         sidePane.setCenter(view);
-
     }
 
 

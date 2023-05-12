@@ -8,11 +8,22 @@ public class BMI {
     double weight;
     double BMIvalue;
 
+    double goal;
+
     public BMI(double height, double weight) {
         this.height = height;
         this.weight = weight;
         BigDecimal bd = new BigDecimal(weight/((height*height)/10000)).setScale(2, RoundingMode.HALF_UP);
         this.BMIvalue = bd.doubleValue();
+
+        double tmp=0;
+        if (bd.doubleValue() < 18.5) {
+            tmp = bd.doubleValue() - 18.5;
+        }   else if (bd.doubleValue() > 24.9){
+            tmp = 24.9 -bd.doubleValue();
+        }
+        BigDecimal goalrounded = new BigDecimal(tmp).setScale(2, RoundingMode.HALF_UP);
+        this.goal = goalrounded.doubleValue();
     }
 
     public double getHeight() {
@@ -39,5 +50,11 @@ public class BMI {
         this.BMIvalue = BMIvalue;
     }
 
+    public double getGoal() {
+        return goal;
+    }
 
+    public void setGoal(double goal) {
+        this.goal = goal;
+    }
 }
