@@ -1,14 +1,18 @@
 package com.example.personal.BasicClass;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class BMI {
     double height;
     double weight;
     double BMIvalue;
 
-    public BMI(double height, double wieght, double BMIvalue) {
+    public BMI(double height, double weight) {
         this.height = height;
-        this.weight = wieght;
-        this.BMIvalue = BMIvalue;
+        this.weight = weight;
+        BigDecimal bd = new BigDecimal(weight/((height*height)/10000)).setScale(2, RoundingMode.HALF_UP);
+        this.BMIvalue = bd.doubleValue();
     }
 
     public double getHeight() {
@@ -34,4 +38,6 @@ public class BMI {
     public void setBMIvalue(double BMIvalue) {
         this.BMIvalue = BMIvalue;
     }
+
+
 }

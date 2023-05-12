@@ -47,10 +47,10 @@
                   </Label>
                </children>
             </GridPane>
-            <Button layoutX="361.0" layoutY="140.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" text="+" />
-            <Button layoutX="442.0" layoutY="140.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" text="-" />
-            <Button layoutX="361.0" layoutY="64.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" text="+" />
-            <Button layoutX="442.0" layoutY="64.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="33.0" text="-" />
+            <Button layoutX="442.0" layoutY="142.0" mnemonicParsing="false" onAction="#weightplus" prefHeight="32.0" prefWidth="33.0" text="+" />
+            <Button layoutX="361.0" layoutY="142.0" mnemonicParsing="false" onAction="#weightminus" prefHeight="32.0" prefWidth="33.0" text="-" />
+            <Button layoutX="442.0" layoutY="65.0" mnemonicParsing="false" onAction="#heightplus" prefHeight="32.0" prefWidth="33.0" text="+" />
+            <Button layoutX="361.0" layoutY="65.0" mnemonicParsing="false" onAction="#heightminus" prefHeight="32.0" prefWidth="33.0" text="-" />
             <Label layoutX="198.0" layoutY="258.0" text="BMI">
                <font>
                   <Font size="17.0" />

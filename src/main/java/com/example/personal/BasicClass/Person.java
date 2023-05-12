@@ -1,7 +1,6 @@
 package com.example.personal.BasicClass;
 
 import javafx.beans.property.*;
-import javafx.scene.layout.BorderPane;
 
 import java.time.LocalDate;
 
@@ -13,6 +12,8 @@ public class Person {
     private final IntegerProperty postalCode;
     private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
+
+
 
 
     public Person(String firstName, String lastName, String street, String gender, int postalCode, String city, LocalDate birthday) {
@@ -108,4 +109,5 @@ public class Person {
     public ObjectProperty<LocalDate> birthdayProperty() {
         return birthday;
     }
+
 }

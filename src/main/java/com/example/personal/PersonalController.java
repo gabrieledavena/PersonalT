@@ -89,22 +89,6 @@ public class PersonalController {
     }
     */
 
-
-
-    /*
-    @FXML
-    public void openBMIview() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("BMIview.fxml"));
-            Stage window = (Stage) BMIbutton.getScene().getWindow();
-            window.setScene(new Scene(root, 800, 500));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-*/
-
     @FXML
     void openBMIview() throws IOException {
 
