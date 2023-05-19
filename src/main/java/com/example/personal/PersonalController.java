@@ -1,6 +1,5 @@
 package com.example.personal;
 
-
 import com.example.personal.BasicClass.Person;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -95,6 +94,7 @@ public class PersonalController {
         BorderPane view = FXMLLoader.load(getClass().getResource("BMIview.fxml"));
         sidePane.setCenter(view);
     }
+
 
 
 }

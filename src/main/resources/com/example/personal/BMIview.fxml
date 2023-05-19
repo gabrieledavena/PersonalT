@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.personal.BMIcontroller">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -61,7 +60,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <ProgressBar layoutX="175.0" layoutY="331.0" prefHeight="20.0" prefWidth="250.0" progress="0.0" />
+            <ProgressBar layoutX="38.0" layoutY="332.0" prefHeight="20.0" prefWidth="540.0" progress="1.0" />
             <Label layoutX="114.0" layoutY="268.0" text="Per arrivare al normopeso:">
                <font>
                   <Font size="17.0" />
@@ -72,6 +71,9 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <Label fx:id="underLabel" layoutX="127.0" layoutY="368.0" text="Sottopeso" />
+            <Label fx:id="averageLabel" layoutX="286.0" layoutY="368.0" text="Normopeso" />
+            <Label fx:id="obesityLabel" layoutX="488.0" layoutY="360.0" text="Label" />
          </children>
       </AnchorPane>
    </center>

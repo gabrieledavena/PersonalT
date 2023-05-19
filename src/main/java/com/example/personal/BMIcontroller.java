@@ -18,6 +18,15 @@ public class BMIcontroller {
     @FXML
     private Label goalLabel;
 
+
+
+    @FXML
+    private Label averageLabel;
+    @FXML
+    private Label underLabel;
+    @FXML
+    private Label obesityLabel;
+
     BMI bmi=new BMI(185, 70);
 
 
@@ -35,6 +44,9 @@ public class BMIcontroller {
             weightLabel.setText(String.valueOf(bmi.getWeight()));
             BMILabel.setText(String.valueOf(bmi.getBMIvalue()));
             goalLabel.setText(String.valueOf(bmi.getGoal())+ " kg");
+
+            //if (bmi.getBMIvalue() )
+
         }
     }
 
@@ -69,4 +81,18 @@ public class BMIcontroller {
         showBMIdetails(getBMIdetails());
     }
 
+    @FXML
+    void hideObesitylabel() {
+        obesityLabel.setVisible(false);
+    }
+
+    @FXML
+    void hideAveragelabel() {
+        averageLabel.setVisible(false);
+    }
+
+    @FXML
+    void hideUnderlabel() {
+        underLabel.setVisible(false);
+    }
 }
