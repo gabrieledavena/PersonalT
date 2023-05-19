@@ -45,7 +45,12 @@ public class BMIcontroller {
             BMILabel.setText(String.valueOf(bmi.getBMIvalue()));
             goalLabel.setText(String.valueOf(bmi.getGoal())+ " kg");
 
-            //if (bmi.getBMIvalue() )
+
+            if (bmi.getBMIvalue()>25 ) {
+                hideUnderlabel();
+                hideAveragelabel();
+            }
+
 
         }
     }
