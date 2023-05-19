@@ -3,6 +3,7 @@ package com.example.personal;
 import com.example.personal.BasicClass.BMI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 
 public class BMIcontroller {
 
@@ -17,15 +18,11 @@ public class BMIcontroller {
 
     @FXML
     private Label goalLabel;
-
-
+    @FXML
+    private Label statusLabel;
 
     @FXML
-    private Label averageLabel;
-    @FXML
-    private Label underLabel;
-    @FXML
-    private Label obesityLabel;
+    private ProgressBar BMIbar;
 
     BMI bmi=new BMI(185, 70);
 
@@ -44,14 +41,27 @@ public class BMIcontroller {
             weightLabel.setText(String.valueOf(bmi.getWeight()));
             BMILabel.setText(String.valueOf(bmi.getBMIvalue()));
             goalLabel.setText(String.valueOf(bmi.getGoal())+ " kg");
+            statusLabel.setText("");
 
-
-            if (bmi.getBMIvalue()>25 ) {
-                hideUnderlabel();
-                hideAveragelabel();
+            if (bmi.getBMIvalue()>=40) {
+                statusLabel.setText("Obesità di ||| classe");
+            }else if (bmi.getBMIvalue()>=35) {
+                statusLabel.setText("Obesità di || classe");
+            }else if (bmi.getBMIvalue()>30) {
+                statusLabel.setText("Obesità di | classe");
+            } else if (bmi.getBMIvalue()>=25 ) {
+                statusLabel.setText("Sovrappeso");
+            } else if (bmi.getBMIvalue()>=18.5) {
+                statusLabel.setText("Normopeso");
+            } else if (bmi.getBMIvalue()>17) {
+                statusLabel.setText("Sottopeso");
+            } else if (bmi.getBMIvalue()>16) {
+                statusLabel.setText("Visibilmente Sottopeso");
+            } else if (bmi.getBMIvalue()<15.9) {
+                statusLabel.setText("Gravemente Sottopeso");
             }
 
-
+            BMIbar.progressProperty().set(bmi.getBMIvalue()/40);
         }
     }
 
@@ -86,18 +96,4 @@ public class BMIcontroller {
         showBMIdetails(getBMIdetails());
     }
 
-    @FXML
-    void hideObesitylabel() {
-        obesityLabel.setVisible(false);
-    }
-
-    @FXML
-    void hideAveragelabel() {
-        averageLabel.setVisible(false);
-    }
-
-    @FXML
-    void hideUnderlabel() {
-        underLabel.setVisible(false);
-    }
 }

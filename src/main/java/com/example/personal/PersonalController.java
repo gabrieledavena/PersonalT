@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class PersonalController {
 
@@ -90,11 +91,15 @@ public class PersonalController {
 
     @FXML
     void openBMIview() throws IOException {
-
-        BorderPane view = FXMLLoader.load(getClass().getResource("BMIview.fxml"));
+        BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BMIview.fxml")));
         sidePane.setCenter(view);
     }
 
+    @FXML
+    void openGymview() throws IOException {
+        BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GymView.fxml")));
+        sidePane.setCenter(view);
+    }
 
 
 }

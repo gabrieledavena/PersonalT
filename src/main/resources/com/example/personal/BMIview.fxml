@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.personal.BMIcontroller">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane layoutX="59.0" layoutY="40.0" prefHeight="160.0" prefWidth="278.0">
               <columnConstraints>
@@ -60,7 +60,6 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <ProgressBar layoutX="38.0" layoutY="332.0" prefHeight="20.0" prefWidth="540.0" progress="1.0" />
             <Label layoutX="114.0" layoutY="268.0" text="Per arrivare al normopeso:">
                <font>
                   <Font size="17.0" />
@@ -71,9 +70,46 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="underLabel" layoutX="127.0" layoutY="368.0" text="Sottopeso" />
-            <Label fx:id="averageLabel" layoutX="286.0" layoutY="368.0" text="Normopeso" />
-            <Label fx:id="obesityLabel" layoutX="488.0" layoutY="360.0" text="Label" />
+            <Label fx:id="statusLabel" alignment="CENTER" layoutY="346.0" prefHeight="28.0" prefWidth="600.0" text="Status">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font></Label>
+            <ProgressBar fx:id="BMIbar" layoutX="30.0" layoutY="323.0" prefHeight="20.0" prefWidth="540.0" />
+            <Label layoutX="246.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="260.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="280.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="367.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="435.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="500.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label layoutX="567.0" layoutY="314.0" text="|">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>
