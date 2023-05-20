@@ -12,8 +12,8 @@
         <columns>
           <TableColumn fx:id="exerciseColumn" prefWidth="75.0" text="Esercizio" />
           <TableColumn fx:id="muscleGroupColumn" prefWidth="75.0" text="Gruppo muscolare" />
+            <TableColumn fx:id="repetitionColumns" prefWidth="75.0" text="Repetition" />
             <TableColumn fx:id="seriesColumn" prefWidth="75.0" text="Serie" />
-            <TableColumn fx:id="repetitionColumns" prefWidth="75.0" text="Ripetizioni" />
             <TableColumn fx:id="weightColumn" prefWidth="75.0" text="Peso" />
         </columns>
          <columnResizePolicy>
