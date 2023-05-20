@@ -24,7 +24,9 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button mnemonicParsing="false" text="Button" />
+          <Button mnemonicParsing="false" onAction="#edit" text="Edit" />
+            <Button mnemonicParsing="false" onAction="#remove" text="Remove" />
+            <Button mnemonicParsing="false" onAction="#newexe" text="New" />
         </buttons>
       </ButtonBar>
    </bottom>

@@ -11,9 +11,12 @@ public class Exercise {
     public  Integer series;
     public  Integer repetitions;
     public  Double weight;
+
     public Exercise(){
 
     }
+
+
     public Exercise(String name, String muscleGroup, Integer series, Integer repetitions, Double weight) {
         this.name = name;
         this.muscleGroup = muscleGroup;
@@ -21,6 +24,15 @@ public class Exercise {
         this.repetitions = repetitions;
         this.weight = weight;
     }
+
+    public Exercise(Exercise other) {
+        this.name = other.getName();
+        this.muscleGroup = other.getMuscleGroup();
+        this.series = other.getSeries();
+        this.repetitions = other.getRepetitions();
+        this.weight = other.getWeight();
+    }
+
     public String getName() {
 
         return name;
@@ -53,4 +65,5 @@ public class Exercise {
     public void setWeight(double weight) {
         this.weight=weight;
     }
+
 }
