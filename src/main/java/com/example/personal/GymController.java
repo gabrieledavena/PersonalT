@@ -36,15 +36,17 @@ public class GymController {
             new Exercise("Panca pianca", "Petto")
 
 );
-    @FXML
+
     public void initialize() {
         // Initialize the person table with the two columns.
 
-        exerciseColumn.setCellValueFactory(new PropertyValueFactory<Exercise, String>(""));
+        exerciseColumn.setCellValueFactory(new PropertyValueFactory<Exercise, String>("eser"));
         muscleGroupColumn.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Gruppo muscolare"));
-        repetitionColumns.setCellValueFactory(new PropertyValueFactory<>("Serie"));
-        seriesColumn.setCellValueFactory(new PropertyValueFactory<>("Ripetizioni"));
-        weightColumn.setCellValueFactory(new PropertyValueFactory<>("Peso"));
+
+
+        //repetitionColumns.setCellValueFactory(new PropertyValueFactory<>("Serie"));
+        //seriesColumn.setCellValueFactory(new PropertyValueFactory<>("Ripetizioni"));
+        //weightColumn.setCellValueFactory(new PropertyValueFactory<>("Peso"));
         Extable.setItems(list);
         // Crea una lista osservabile di esercizi
         //ObservableList<Exercise> exercises = FXCollections.observableArrayList();
@@ -87,11 +89,11 @@ public class GymController {
 
  */
 
-    int selectedIndex() {
+   /* int selectedIndex() {
         int selectedIndex = Extable.getSelectionModel().getSelectedIndex();
         if (selectedIndex < 0) {
             throw new NoSuchElementException();
         }
         return selectedIndex;
-    }
+    }*/
 }
