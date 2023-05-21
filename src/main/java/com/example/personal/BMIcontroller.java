@@ -40,6 +40,7 @@ public class BMIcontroller {
             heightLabel.setText(String.valueOf(bmi.getHeight()));
             weightLabel.setText(String.valueOf(bmi.getWeight()));
             BMILabel.setText(String.valueOf(bmi.getBMIvalue()));
+
             goalLabel.setText(String.valueOf(bmi.getGoal())+ " kg");
             statusLabel.setText("");
 

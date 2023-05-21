@@ -18,9 +18,9 @@ public class BMI {
 
         double tmp=0;
         if (bd.doubleValue() < 18.5) {
-            tmp = bd.doubleValue() - 18.5;
+            tmp= (bd.doubleValue() - 18.5) *((height*height)/10000);
         }   else if (bd.doubleValue() > 24.9){
-            tmp = 24.9 -bd.doubleValue();
+            tmp = (24.9 -bd.doubleValue())*((height*height)/10000);
         }
         BigDecimal goalrounded = new BigDecimal(tmp).setScale(2, RoundingMode.HALF_UP);
         this.goal = goalrounded.doubleValue();
