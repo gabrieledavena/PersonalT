@@ -22,7 +22,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Edit Data" />
+              <MenuItem mnemonicParsing="false" onAction="#handleEditPerson" text="Edit Data" />
                   <MenuItem mnemonicParsing="false" text="Save as..." />
                   <MenuItem mnemonicParsing="false" text="Exit" />
             </items>
@@ -140,9 +140,9 @@
                         <Rectangle2D />
                      </viewport>
                   </ImageView>
-                  <Button layoutX="411.0" layoutY="142.0" mnemonicParsing="false" onAction="#openBMIview" prefHeight="60.0" prefWidth="60.0" text="BMI" />
+                  <Button fx:id="bmiButton" layoutX="411.0" layoutY="142.0" mnemonicParsing="false" onAction="#openBMIview" prefHeight="60.0" prefWidth="60.0" text="BMI" />
                   <Button layoutX="411.0" layoutY="227.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" text="Dieta" />
-                  <Button layoutX="411.0" layoutY="312.0" mnemonicParsing="false" onAction="#openGymview" prefHeight="60.0" prefWidth="60.0" text="Scheda" />
+                  <Button fx:id="recordCardButton" layoutX="411.0" layoutY="312.0" mnemonicParsing="false" onAction="#openGymview" prefHeight="60.0" prefWidth="60.0" text="Scheda" />
                </children>
             </AnchorPane>
             <BorderPane fx:id="sidePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" />

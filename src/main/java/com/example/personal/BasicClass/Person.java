@@ -26,6 +26,16 @@ public class Person {
         this.birthday = new SimpleObjectProperty<>(birthday);
     }
 
+    public Person(Person other) {
+        this.firstName = other.firstName;
+        this.lastName = other.lastName;
+        this.street = other.street;
+        this.gender = other.gender;
+        this.postalCode = other.postalCode;
+        this.city = other.city;
+        this.birthday = other.birthday;
+    }
+
     public String getFirstName() {
         return firstName.get();
     }

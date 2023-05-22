@@ -1,7 +1,6 @@
 package com.example.personal;
 
 
-import com.example.personal.BasicClass.Exercise;
 import com.example.personal.BasicClass.Person;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -12,8 +11,11 @@ public class PersonEditDialogController {
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
+
     @FXML
-    private TextField streetField;
+    private TextField genderField;
+    @FXML
+    private TextField addressField;
     @FXML
     private TextField cityField;
     @FXML
@@ -26,7 +28,8 @@ public class PersonEditDialogController {
     public void initialize() {
         firstNameField.textProperty().addListener((observable, oldValue, newValue) -> person.firstNameProperty().set(newValue));
         lastNameField.textProperty().addListener((observable, oldValue, newValue) -> person.lastNameProperty().set(newValue));
-        streetField.textProperty().addListener((observable, oldValue, newValue) -> person.streetProperty().set(newValue));
+        genderField.textProperty().addListener((observable, oldValue, newValue) -> person.genderProperty().set(newValue));
+        addressField.textProperty().addListener((observable, oldValue, newValue) -> person.streetProperty().set(newValue));
         cityField.textProperty().addListener((observable, oldValue, newValue) -> person.cityProperty().set(newValue));
         postalCodeField.textProperty().addListener((observable, oldValue, newValue) -> person.postalCodeProperty().set(Integer.parseInt(newValue)));
         birthdayDatePicker.valueProperty().addListener((observable, oldValue, newValue) -> person.birthdayProperty().set(newValue));
@@ -35,7 +38,8 @@ public class PersonEditDialogController {
     void update() {
         firstNameField.textProperty().set(person.getFirstName());
         lastNameField.textProperty().set(person.getLastName());
-        streetField.textProperty().set(person.getStreet());
+        genderField.textProperty().set(person.getGender());
+        addressField.textProperty().set(person.getStreet());
         cityField.textProperty().set(person.getCity());
         postalCodeField.textProperty().set(String.valueOf(person.getPostalCode()));
         birthdayDatePicker.valueProperty().set(person.getBirthday());

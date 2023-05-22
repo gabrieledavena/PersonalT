@@ -5,9 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Optional;
 
 public class PersonalController {
 
@@ -36,12 +39,22 @@ public class PersonalController {
 
 
     @FXML
+    private Button bmiButton;
+
+    @FXML
+    private Button recordCardButton;
+
+    Person person = new Person("Shrek", "3", "Palude", "Orco", 999, "Far far away", LocalDate.of(1945, 4, 4));
+
+    @FXML
     public void initialize()  {
+        showPersonDetails(null);
         showPersonDetails(getPersonData());
  }
     Person getPersonData() {
-        return new Person("Shrek", "3", "Palude", "Orco", 999, "Far far away", LocalDate.of(1945, 4, 4));
+        return person;
     }
+
 
     private void showPersonDetails(Person person) {
         if (person != null) {
@@ -49,7 +62,7 @@ public class PersonalController {
             LastNameLabel.setText(person.getLastName());
             addressLabel.setText(person.getStreet());
             postalCodeLabel.setText(String.valueOf(person.getPostalCode()));
-            GenderLabel.setText(String.valueOf(person.getGender()));
+            GenderLabel.setText(person.getGender());
             cityLabel.setText(person.getCity());
             BirthdayLabel.setText(person.getBirthday().toString());
         } else {
@@ -62,7 +75,7 @@ public class PersonalController {
         }
     }
 
-    /*
+
     @FXML
     public void handleEditPerson() {
         try {
@@ -71,6 +84,7 @@ public class PersonalController {
             DialogPane view = loader.load();
             PersonEditDialogController controller = loader.getController();
 
+            controller.setPerson(getPersonData());
 
             // Create the dialog
             Dialog<ButtonType> dialog = new Dialog<>();
@@ -81,22 +95,27 @@ public class PersonalController {
             // Show the dialog and wait until the user closes it
             Optional<ButtonType> clickedButton = dialog.showAndWait();
             if (clickedButton.orElse(ButtonType.CANCEL) == ButtonType.OK) {
-                .getItems().set(selectedIndex, controller.getPerson());
+                //DEVO FARE UN METODO PER SALVARE LA PERSONA UNA  VOLTA MODIFICATA
+                showPersonDetails(controller.getPerson());
             }
         }   catch (IOException e) {
             e.printStackTrace();
         }
     }
-    */
+
 
     @FXML
     void openBMIview() throws IOException {
+        bmiButton.setDisable(true);
+        recordCardButton.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BMIview.fxml")));
         sidePane.setCenter(view);
     }
 
     @FXML
     void openGymview() throws IOException {
+        recordCardButton.setDisable(true);
+        bmiButton.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GymView.fxml")));
         sidePane.setCenter(view);
     }
