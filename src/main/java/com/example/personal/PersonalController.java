@@ -1,21 +1,31 @@
 package com.example.personal;
 
 import com.example.personal.BasicClass.Person;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+
+
 
 public class PersonalController {
 
     @FXML
-    private Label BirthdayLabel;
+    private Label AgeLabel;
 
     @FXML
     private Label GenderLabel;
@@ -44,12 +54,14 @@ public class PersonalController {
     @FXML
     private Button recordCardButton;
 
-    Person person = new Person("Shrek", "3", "Palude", "Orco", 999, "Far far away", LocalDate.of(1945, 4, 4));
+    Person person = new Person("Shrek", "3", "Palude", "Orco", 999, "Far far away", 24);
 
     @FXML
     public void initialize()  {
         showPersonDetails(null);
         showPersonDetails(getPersonData());
+        //creatf();
+
  }
     Person getPersonData() {
         return person;
@@ -64,14 +76,14 @@ public class PersonalController {
             postalCodeLabel.setText(String.valueOf(person.getPostalCode()));
             GenderLabel.setText(person.getGender());
             cityLabel.setText(person.getCity());
-            BirthdayLabel.setText(person.getBirthday().toString());
+            AgeLabel.setText(String.valueOf(person.getAge()));
         } else {
             firstNameLabel.setText("");
             LastNameLabel.setText("");
             addressLabel.setText("");
             postalCodeLabel.setText("");
             cityLabel.setText("");
-            BirthdayLabel.setText("");
+            AgeLabel.setText("");
         }
     }
 
@@ -103,6 +115,27 @@ public class PersonalController {
         }
     }
 
+    @FXML
+    private void handleOpen() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            File file = fileChooser.showOpenDialog(null);
+            if (file != null) {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.registerModule(new JavaTimeModule());
+                person = mapper.readValue(file, new TypeReference<>() {
+                });
+                showPersonDetails(person);
+            }
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Could not load data").showAndWait();
+        }
+    }
+
+
 
     @FXML
     void openBMIview() throws IOException {
@@ -120,5 +153,34 @@ public class PersonalController {
         sidePane.setCenter(view);
     }
 
+    void creatf() {
+        Map<String, Object> jsonData = new HashMap<>();
+        jsonData.put("firstName", "John");
+        jsonData.put("lastName", "Negro");
+        jsonData.put("street", "Palude");
+        jsonData.put("gender", "Orco");
+        jsonData.put("postalCode", 999);
+        jsonData.put("city", "Far Far Away");
+        jsonData.put("age", 20);
 
+        // Creazione dell'oggetto ObjectMapper di Jackson
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            // Converte l'oggetto mappa in una stringa JSON
+            String jsonString = objectMapper.writeValueAsString(jsonData);
+
+            // Specifica il percorso del file JSON da creare
+            String filePath = "/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/Personajj.json";
+
+            // Scrive il contenuto JSON nel file
+            FileWriter fileWriter = new FileWriter(filePath);
+            fileWriter.write(jsonString);
+            fileWriter.close();
+
+            System.out.println("File JSON creato con successo.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

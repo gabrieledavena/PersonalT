@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ButtonType?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -40,9 +39,9 @@
             <Label text="Indirizzo" GridPane.rowIndex="3" />
             <Label text="Città" GridPane.rowIndex="4" />
             <Label text="Birthday" GridPane.rowIndex="6" />
-            <DatePicker fx:id="birthdayDatePicker" prefHeight="26.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          <Label text="Codice Postale" GridPane.rowIndex="5" />
          <TextField fx:id="postalCodeField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <TextField fx:id="AgeField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
         </GridPane>
     </content>
     <ButtonType fx:constant="CANCEL" />

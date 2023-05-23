@@ -21,7 +21,7 @@ public class PersonEditDialogController {
     @FXML
     private TextField postalCodeField;
     @FXML
-    private DatePicker birthdayDatePicker;
+    private TextField AgeField;
     Person person;
 
     @FXML
@@ -32,7 +32,7 @@ public class PersonEditDialogController {
         addressField.textProperty().addListener((observable, oldValue, newValue) -> person.streetProperty().set(newValue));
         cityField.textProperty().addListener((observable, oldValue, newValue) -> person.cityProperty().set(newValue));
         postalCodeField.textProperty().addListener((observable, oldValue, newValue) -> person.postalCodeProperty().set(Integer.parseInt(newValue)));
-        birthdayDatePicker.valueProperty().addListener((observable, oldValue, newValue) -> person.birthdayProperty().set(newValue));
+        AgeField.textProperty().addListener((observable, oldValue, newValue) -> person.ageProperty().set(Integer.parseInt(newValue)));
     }
 
     void update() {
@@ -42,7 +42,7 @@ public class PersonEditDialogController {
         addressField.textProperty().set(person.getStreet());
         cityField.textProperty().set(person.getCity());
         postalCodeField.textProperty().set(String.valueOf(person.getPostalCode()));
-        birthdayDatePicker.valueProperty().set(person.getBirthday());
+        AgeField.textProperty().set(String.valueOf(person.getAge()));
     }
 
     public Person getPerson() {

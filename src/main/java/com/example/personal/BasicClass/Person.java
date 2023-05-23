@@ -11,19 +11,19 @@ public class Person {
     private final StringProperty gender;
     private final IntegerProperty postalCode;
     private final StringProperty city;
-    private final ObjectProperty<LocalDate> birthday;
+    private final IntegerProperty age;
 
 
 
 
-    public Person(String firstName, String lastName, String street, String gender, int postalCode, String city, LocalDate birthday) {
+    public Person(String firstName, String lastName, String street, String gender, int postalCode, String city, int age) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.street = new SimpleStringProperty(street);
         this.gender = new SimpleStringProperty(gender);
         this.postalCode = new SimpleIntegerProperty(postalCode);
         this.city = new SimpleStringProperty(city);
-        this.birthday = new SimpleObjectProperty<>(birthday);
+        this.age = new SimpleIntegerProperty(age);
     }
 
     public Person(Person other) {
@@ -33,7 +33,7 @@ public class Person {
         this.gender = other.gender;
         this.postalCode = other.postalCode;
         this.city = other.city;
-        this.birthday = other.birthday;
+        this.age = other.age;
     }
 
     public String getFirstName() {
@@ -108,18 +108,15 @@ public class Person {
         return city;
     }
 
-    public LocalDate getBirthday() {
-        return birthday.get();
+    public int getAge() {
+        return age.get();
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday.set(birthday);
+    public IntegerProperty ageProperty() {
+        return age;
     }
 
-    public ObjectProperty<LocalDate> birthdayProperty() {
-        return birthday;
+    public void setAge(int age) {
+        this.age.set(age);
     }
-
-
-
 }

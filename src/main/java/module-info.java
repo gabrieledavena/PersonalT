@@ -6,5 +6,12 @@ module com.example.personal {
     opens com.example.personal to javafx.fxml;
     exports com.example.personal;
     exports com.example.personal.BasicClass;
+
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.datatype.jsr310;
+
     opens com.example.personal.BasicClass to javafx.fxml;
+
+
 }
