@@ -2,20 +2,16 @@ package com.example.personal.BasicClass;
 
 import javafx.beans.property.*;
 
-import java.time.LocalDate;
-
 public class Person {
-    private final StringProperty firstName ;
-    private final StringProperty lastName;
-    private final StringProperty street;
-    private final StringProperty gender;
-    private final IntegerProperty postalCode;
-    private final StringProperty city;
-    private final IntegerProperty age;
 
-
-
-
+    private StringProperty firstName ;
+    private StringProperty lastName;
+    private StringProperty street;
+    private StringProperty gender;
+    private IntegerProperty postalCode;
+    private StringProperty city;
+    private IntegerProperty age;
+    public Person() {}
     public Person(String firstName, String lastName, String street, String gender, int postalCode, String city, int age) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
@@ -36,12 +32,13 @@ public class Person {
         this.age = other.age;
     }
 
+
     public String getFirstName() {
         return firstName.get();
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName.set(firstName);
+    public void setFirstName(StringProperty firstName) {
+        this.firstName=firstName;
     }
 
     public StringProperty firstNameProperty() {
@@ -52,8 +49,8 @@ public class Person {
         return lastName.get();
     }
 
-    public void setLastName(String lastName) {
-        this.lastName.set(lastName);
+    public void setLastName(StringProperty lastName) {
+        this.lastName=lastName;
     }
 
     public StringProperty lastNameProperty() {
@@ -64,8 +61,8 @@ public class Person {
         return street.get();
     }
 
-    public void setStreet(String street) {
-        this.street.set(street);
+    public void setStreet(StringProperty street) {
+        this.street=street;
     }
 
     public String getGender() {
@@ -76,8 +73,8 @@ public class Person {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender.set(gender);
+    public void setGender(StringProperty gender) {
+        this.gender=gender;
     }
 
     public StringProperty streetProperty() {
@@ -88,8 +85,8 @@ public class Person {
         return postalCode.get();
     }
 
-    public void setPostalCode(int postalCode) {
-        this.postalCode.set(postalCode);
+    public void setPostalCode(IntegerProperty postalCode) {
+        this.postalCode=postalCode;
     }
 
     public IntegerProperty postalCodeProperty() {
@@ -100,8 +97,8 @@ public class Person {
         return city.get();
     }
 
-    public void setCity(String city) {
-        this.city.set(city);
+    public void setCity(StringProperty city) {
+        this.city=city;
     }
 
     public StringProperty cityProperty() {
@@ -116,7 +113,7 @@ public class Person {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age.set(age);
+    public void setAge(IntegerProperty age) {
+        this.age=age;
     }
 }

@@ -4,6 +4,7 @@ import com.example.personal.BasicClass.Person;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -54,15 +55,19 @@ public class PersonalController {
     @FXML
     private Button recordCardButton;
 
+    @FXML
+    private Button Contatore;
+
     Person person = new Person("Shrek", "3", "Palude", "Orco", 999, "Far far away", 24);
 
     @FXML
-    public void initialize()  {
+    public void initialize() {
         showPersonDetails(null);
         showPersonDetails(getPersonData());
         //creatf();
 
- }
+    }
+
     Person getPersonData() {
         return person;
     }
@@ -110,7 +115,7 @@ public class PersonalController {
                 //DEVO FARE UN METODO PER SALVARE LA PERSONA UNA  VOLTA MODIFICATA
                 showPersonDetails(controller.getPerson());
             }
-        }   catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -131,17 +136,27 @@ public class PersonalController {
                 showPersonDetails(person);
             }
         } catch (IOException e) {
+            e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Could not load data").showAndWait();
         }
-    }
 
+    }
 
 
     @FXML
     void openBMIview() throws IOException {
         bmiButton.setDisable(true);
         recordCardButton.setDisable(false);
+        Contatore.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BMIview.fxml")));
+        sidePane.setCenter(view);
+    }
+    @FXML
+    void openContatoreview() throws IOException {
+        Contatore.setDisable(true);
+        recordCardButton.setDisable(false);
+        bmiButton.setDisable(false);
+        BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Contatoreview.fxml")));
         sidePane.setCenter(view);
     }
 
@@ -149,11 +164,12 @@ public class PersonalController {
     void openGymview() throws IOException {
         recordCardButton.setDisable(true);
         bmiButton.setDisable(false);
+        Contatore.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GymView.fxml")));
         sidePane.setCenter(view);
     }
 
-    void creatf() {
+    void creatf() throws IOException {
         Map<String, Object> jsonData = new HashMap<>();
         jsonData.put("firstName", "John");
         jsonData.put("lastName", "Negro");
@@ -171,7 +187,7 @@ public class PersonalController {
             String jsonString = objectMapper.writeValueAsString(jsonData);
 
             // Specifica il percorso del file JSON da creare
-            String filePath = "/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/Personajj.json";
+            String filePath = "C:\\Users\\samuele\\Desktop\\svolgimento\\Personajj.json";
 
             // Scrive il contenuto JSON nel file
             FileWriter fileWriter = new FileWriter(filePath);
@@ -183,4 +199,5 @@ public class PersonalController {
             e.printStackTrace();
         }
     }
+
 }
