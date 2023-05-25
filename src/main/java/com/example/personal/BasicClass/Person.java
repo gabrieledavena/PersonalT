@@ -4,22 +4,22 @@ import javafx.beans.property.*;
 
 public class Person {
 
-    private StringProperty firstName ;
-    private StringProperty lastName;
-    private StringProperty street;
-    private StringProperty gender;
-    private IntegerProperty postalCode;
-    private StringProperty city;
-    private IntegerProperty age;
+    private String firstName ;
+    private String lastName;
+    private String street;
+    private String gender;
+    private Integer postalCode;
+    private String city;
+    private Integer age;
     public Person() {}
     public Person(String firstName, String lastName, String street, String gender, int postalCode, String city, int age) {
-        this.firstName = new SimpleStringProperty(firstName);
-        this.lastName = new SimpleStringProperty(lastName);
-        this.street = new SimpleStringProperty(street);
-        this.gender = new SimpleStringProperty(gender);
-        this.postalCode = new SimpleIntegerProperty(postalCode);
-        this.city = new SimpleStringProperty(city);
-        this.age = new SimpleIntegerProperty(age);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.gender = gender;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.age = age;
     }
 
     public Person(Person other) {
@@ -32,88 +32,59 @@ public class Person {
         this.age = other.age;
     }
 
-
     public String getFirstName() {
-        return firstName.get();
-    }
-
-    public void setFirstName(StringProperty firstName) {
-        this.firstName=firstName;
-    }
-
-    public StringProperty firstNameProperty() {
         return firstName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getLastName() {
-        return lastName.get();
-    }
-
-    public void setLastName(StringProperty lastName) {
-        this.lastName=lastName;
-    }
-
-    public StringProperty lastNameProperty() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getStreet() {
-        return street.get();
-    }
-
-    public void setStreet(StringProperty street) {
-        this.street=street;
-    }
-
-    public String getGender() {
-        return gender.get();
-    }
-
-    public StringProperty genderProperty() {
-        return gender;
-    }
-
-    public void setGender(StringProperty gender) {
-        this.gender=gender;
-    }
-
-    public StringProperty streetProperty() {
         return street;
     }
 
-    public int getPostalCode() {
-        return postalCode.get();
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public void setPostalCode(IntegerProperty postalCode) {
-        this.postalCode=postalCode;
+    public String getGender() {
+        return gender;
     }
 
-    public IntegerProperty postalCodeProperty() {
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Integer getPostalCode() {
         return postalCode;
     }
 
+    public void setPostalCode(Integer postalCode) {
+        this.postalCode = postalCode;
+    }
+
     public String getCity() {
-        return city.get();
-    }
-
-    public void setCity(StringProperty city) {
-        this.city=city;
-    }
-
-    public StringProperty cityProperty() {
         return city;
     }
 
-    public int getAge() {
-        return age.get();
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public IntegerProperty ageProperty() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(IntegerProperty age) {
-        this.age=age;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
