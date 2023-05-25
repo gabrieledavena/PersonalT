@@ -1,0 +1,64 @@
+[ {
+  "firstName" : "Hans",
+  "lastName" : "Muster",
+  "street" : "Schillerstraße",
+  "postalCode" : 1123,
+  "city" : "Munich",
+  "birthday" : [ 1955, 1, 3 ]
+}, {
+  "firstName" : "Ruth",
+  "lastName" : "Mueller",
+  "street" : "Goethestraße",
+  "postalCode" : 5437,
+  "city" : "Berlin",
+  "birthday" : [ 1934, 2, 23 ]
+}, {
+  "firstName" : "Heinz",
+  "lastName" : "Kurz",
+  "street" : "Jahnstraße",
+  "postalCode" : 6778,
+  "city" : "Leipzig",
+  "birthday" : [ 1929, 2, 13 ]
+}, {
+  "firstName" : "Cornelia",
+  "lastName" : "Meier",
+  "street" : "Mozartstraße",
+  "postalCode" : 2234,
+  "city" : "Nuremberg",
+  "birthday" : [ 1977, 6, 5 ]
+}, {
+  "firstName" : "Werner",
+  "lastName" : "Meyer",
+  "street" : "Hauptstraße",
+  "postalCode" : 8879,
+  "city" : "Frankfurt",
+  "birthday" : [ 1976, 6, 6 ]
+}, {
+  "firstName" : "Lydia",
+  "lastName" : "Kunz",
+  "street" : "Hauptstraße",
+  "postalCode" : 9823,
+  "city" : "Frankfurt",
+  "birthday" : [ 1999, 6, 16 ]
+}, {
+  "firstName" : "Anna",
+  "lastName" : "Best",
+  "street" : "Schulstraße",
+  "postalCode" : 5872,
+  "city" : "Erfurt",
+  "birthday" : [ 1984, 8, 2 ]
+}, {
+  "firstName" : "Stefan",
+  "lastName" : "Meier",
+  "street" : "Gartenstraße",
+  "postalCode" : 3386,
+  "city" : "Bremen",
+  "birthday" : [ 1987, 10, 21 ]
+}, {
+  "firstName" : "Martin",
+  "lastName" : "Mueller",
+  "street" : "Bahnhofstraße",
+  "postalCode" : 3345,
+  "city" : "Hamburg",
+  "birthday" : [ 1992, 10, 7 ]
+} ]

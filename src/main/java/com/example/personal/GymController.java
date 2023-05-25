@@ -46,8 +46,8 @@ public class GymController {
 
     ObservableList<Exercise> getExerciseData() {
         ObservableList<Exercise> exercises = FXCollections.observableArrayList();
-       exercises.add(new Exercise("sega", "pene", 1, 10, 5.0));
-       exercises.add(new Exercise("dio", "karim", 1, 10, 5.0));
+       exercises.add(new Exercise("Panca piana", "petto", 1, 10, 5.0));
+       exercises.add(new Exercise("Flessioni", "Petto", 1, 10, 5.0));
         return exercises;
     }
 

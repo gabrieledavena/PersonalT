@@ -26,13 +26,13 @@ public class PersonEditDialogController {
 
     @FXML
     public void initialize() {
-        firstNameField.textProperty().addListener((observable, oldValue, newValue) -> person.firstNameProperty().set(newValue));
-        lastNameField.textProperty().addListener((observable, oldValue, newValue) -> person.lastNameProperty().set(newValue));
-        genderField.textProperty().addListener((observable, oldValue, newValue) -> person.genderProperty().set(newValue));
-        addressField.textProperty().addListener((observable, oldValue, newValue) -> person.streetProperty().set(newValue));
-        cityField.textProperty().addListener((observable, oldValue, newValue) -> person.cityProperty().set(newValue));
-        postalCodeField.textProperty().addListener((observable, oldValue, newValue) -> person.postalCodeProperty().set(Integer.parseInt(newValue)));
-        AgeField.textProperty().addListener((observable, oldValue, newValue) -> person.ageProperty().set(Integer.parseInt(newValue)));
+        firstNameField.textProperty().addListener((observable, oldValue, newValue) -> person.setFirstName(newValue));
+        lastNameField.textProperty().addListener((observable, oldValue, newValue) -> person.setLastName(newValue));
+        genderField.textProperty().addListener((observable, oldValue, newValue) -> person.setGender(newValue));
+        addressField.textProperty().addListener((observable, oldValue, newValue) -> person.setStreet(newValue));
+        cityField.textProperty().addListener((observable, oldValue, newValue) -> person.setCity(newValue));
+        postalCodeField.textProperty().addListener((observable, oldValue, newValue) -> person.setPostalCode(Integer.valueOf(newValue)));
+        AgeField.textProperty().addListener((observable, oldValue, newValue) -> person.setAge(Integer.valueOf(newValue)));
     }
 
     void update() {

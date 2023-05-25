@@ -2,27 +2,24 @@ package com.example.personal;
 
 import com.example.personal.BasicClass.Person;
 import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
+
 
 import java.io.File;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-
+import java.util.*;
 
 
 public class PersonalController {
@@ -65,13 +62,28 @@ public class PersonalController {
     @FXML
     public void initialize() {
         showPersonDetails(null);
-        showPersonDetails(getPersonData());
-        //creatf();
+        try {
+
+            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/Pe1.json");
+            if (file != null) {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.registerModule(new JavaTimeModule());
+
+                person=mapper.readValue(file, new TypeReference<Person>() {});
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Could not load data").showAndWait();
+
+        }
+        showPersonDetails(person);
+
 
     }
 
     Person getPersonData() {
-        return person;
+return person;
     }
 
 
@@ -133,13 +145,15 @@ public class PersonalController {
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
-                person = mapper.readValue(file, new TypeReference<>() {
-                });
+                /*List<Person> persons = mapper.readValue(file, new TypeReference<>() {});
+                person=new Person(persons.get(0));*/
+                Person person =mapper.readValue(file, new TypeReference<Person>() {});
                 showPersonDetails(person);
             }
         } catch (IOException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Could not load data").showAndWait();
+
         }
 
     }
@@ -171,7 +185,7 @@ public class PersonalController {
         sidePane.setCenter(view);
     }
 
-    void openDataview (Stage stage) throws IOException {
+    /*void openDietaview (Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PersonalApplication.class.getResource("Dietview.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1150, 450);
         stage.setMinWidth(1200);
@@ -179,37 +193,28 @@ public class PersonalController {
         stage.setTitle("Dieta");
         stage.setScene(scene);
         stage.show();
+    }*/
+
+    @FXML
+    void handleSaveAs() {
+            try {
+                FileChooser fileChooser = new FileChooser();
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
+                fileChooser.getExtensionFilters().add(extFilter);
+
+                File file = fileChooser.showSaveDialog(null);
+                if (file != null) {
+                    ObjectMapper mapper = new ObjectMapper();
+                    mapper.registerModule(new JavaTimeModule());
+                    mapper.writerWithDefaultPrettyPrinter().writeValue(file, getPersonData());
+                }
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
+            }
     }
 
-    void creatf() {
-        Map<String, Object> jsonData = new HashMap<>();
-        jsonData.put("firstName", "John");
-        jsonData.put("lastName", "Negro");
-        jsonData.put("street", "Palude");
-        jsonData.put("gender", "Orco");
-        jsonData.put("postalCode", 999);
-        jsonData.put("city", "Far Far Away");
-        jsonData.put("age", 20);
-
-        // Creazione dell'oggetto ObjectMapper di Jackson
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        try {
-            // Converte l'oggetto mappa in una stringa JSON
-            String jsonString = objectMapper.writeValueAsString(jsonData);
-
-            // Specifica il percorso del file JSON da creare
-            String filePath = "C:\\Users\\samuele\\Desktop\\svolgimento\\Personajj.json";
-
-            // Scrive il contenuto JSON nel file
-            FileWriter fileWriter = new FileWriter(filePath);
-            fileWriter.write(jsonString);
-            fileWriter.close();
-
-            System.out.println("File JSON creato con successo.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    private void handleExit() {
+        System.exit(0);
     }
-
 }

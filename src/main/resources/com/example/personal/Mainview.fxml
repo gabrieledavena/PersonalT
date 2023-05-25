@@ -23,8 +23,8 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleEditPerson" text="Edit Data" />
-                  <MenuItem mnemonicParsing="false" text="Save as..." />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleSaveAs" text="Save as..." />
+                  <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
                   <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open" />
             </items>
           </Menu>
