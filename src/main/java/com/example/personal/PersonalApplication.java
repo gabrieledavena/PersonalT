@@ -3,9 +3,11 @@ package com.example.personal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class PersonalApplication extends Application {
     @Override
@@ -14,6 +16,7 @@ public class PersonalApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 1150, 450);
         stage.setMinWidth(1200);
         stage.setMinHeight(550);
+        stage.getIcons().add(new Image("com/example/personal/images/shrek avatar.jpg"));
         stage.setTitle("Personal Trainer");
         stage.setScene(scene);
         stage.show();
