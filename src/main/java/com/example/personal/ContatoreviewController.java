@@ -1,71 +1,82 @@
 package com.example.personal;
 
-import com.example.personal.BasicClass.BMI;
-import com.example.personal.BasicClass.Contatore;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import com.fazecast.jSerialComm.*;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import java.text.*;
-import java.util.*;
-import javafx.scene.control.Label;
+import  com.example.personal.BasicClass.Contatore;
 import com.fazecast.jSerialComm.SerialPort;
+import com.fazecast.jSerialComm .*;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
+import java.util.Scanner;
+
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serial;
+import java.util.Enumeration;
+import java.util.concurrent.CountDownLatch;
+
 public class ContatoreviewController {
 
+    @FXML
+    private Label count;
+    int variable=1;
+    @FXML
+    public void initialize() {
+        SerialPort[] ports = SerialPort.getCommPorts();
 
 
-        private Contatore contatore;
-        private SerialPort arduinoPort;
+        System.out.println("Elenco porte seriale disponibili:");
 
-        public ContatoreviewController() {
-            contatore = new Contatore();
+        for (SerialPort port : ports) {
+            System.out.println(port.getSystemPortName());
         }
 
-        public void connectToArduino(String portName) {
-            arduinoPort = SerialPort.getCommPort(portName);
-            arduinoPort.setBaudRate(9600);
+        // Scegli la porta seriale da utilizzare (es. "COM3" per Windows)
+        String selectedPort = "COM3";
+        SerialPort serialPort = SerialPort.getCommPort(selectedPort);
+        if (serialPort.openPort()) {
+            System.out.println("Connessione seriale aperta su " + selectedPort);
+        } else {
+            System.out.println("Impossibile aprire la connessione seriale su " + selectedPort);
+        }
 
-            if (arduinoPort.openPort()) {
-                System.out.println("Connessione stabilita con Arduino sulla porta: " + portName);
-                startReadingData();
-            } else {
-                System.out.println("Impossibile stabilire una connessione con Arduino sulla porta: " + portName);
+        // Imposta i parametri della porta seriale
+        serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
+        System.out.println("1");
+        // Aggiungi un listener per gestire gli eventi di ricezione dati
+
+        System.out.println("1");
+        serialPort.addDataListener(new SerialPortDataListener() {  public int getListeningEvents() {
+            System.out.println("2");
+            return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
             }
-        }
+            public void serialEvent(SerialPortEvent event) {
 
-        public void disconnectFromArduino() {
-            if (arduinoPort != null && arduinoPort.isOpen()) {
-                arduinoPort.closePort();
-                System.out.println("Connessione con Arduino chiusa.");
-            }
-        }
+                if (event.getEventType() == SerialPort.LISTENING_EVENT_DATA_AVAILABLE) {
+                    byte[] newData = new byte[serialPort.bytesAvailable()];
+                    int numRead = serialPort.readBytes(newData, newData.length);
 
-        private void startReadingData() {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(arduinoPort.getInputStream()))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    int buttonState = Integer.parseInt(line);
-                    if (buttonState == 1) {
-                        contatore.aggiungi();
-                        System.out.println("Count: " + contatore.getCount());
+                    // Converti i dati in una stringa
+                    String receivedData = new String(newData);
+                    if (receivedData.trim().equals("1")) {
+                        // Aggiungi 1 al valore della variabile
+                         // Valore iniziale della variabile
+                        variable += 1;
+                        System.out.println("Valore variabile aggiornato: " + variable);
                     }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+                    if (receivedData.trim().equals("2")) {
+                        // Aggiungi 1 al valore della variabile
+                        // Valore iniziale della variabile
+                        variable -= 1;
+                        System.out.println("Valore variabile aggiornato: " + variable);
+                    }
 
-        public static void main(String[] args) {
-            ContatoreviewController controller = new ContatoreviewController();
-            controller.connectToArduino("COM3"); // Sostituisci con il nome effettivo della porta Arduino
-        }
+
+
+                    Platform.runLater(() -> {count.setText(String.valueOf(variable));});
+                }
+            }
+        });
+
     }
+}
