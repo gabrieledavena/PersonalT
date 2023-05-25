@@ -1,6 +1,5 @@
 package com.example.personal;
 
-import  com.example.personal.BasicClass.Contatore;
 import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm .*;
 import javafx.application.Platform;
