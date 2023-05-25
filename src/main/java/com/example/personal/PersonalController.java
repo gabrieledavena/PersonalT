@@ -7,10 +7,12 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -169,7 +171,17 @@ public class PersonalController {
         sidePane.setCenter(view);
     }
 
-    void creatf() throws IOException {
+    void openDataview (Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(PersonalApplication.class.getResource("Dietview.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1150, 450);
+        stage.setMinWidth(1200);
+        stage.setMinHeight(550);
+        stage.setTitle("Dieta");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    void creatf() {
         Map<String, Object> jsonData = new HashMap<>();
         jsonData.put("firstName", "John");
         jsonData.put("lastName", "Negro");

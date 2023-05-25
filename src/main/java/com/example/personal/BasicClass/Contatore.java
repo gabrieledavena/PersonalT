@@ -4,7 +4,7 @@ import javafx.scene.control.Label;
 
 public class Contatore {
 
-    private Label count;
+    private Double count;
 
         public Contatore() {
             count = 0.0;
