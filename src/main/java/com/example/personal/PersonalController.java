@@ -145,8 +145,7 @@ return person;
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
-                /*List<Person> persons = mapper.readValue(file, new TypeReference<>() {});
-                person=new Person(persons.get(0));*/
+
                 Person person =mapper.readValue(file, new TypeReference<Person>() {});
                 showPersonDetails(person);
             }

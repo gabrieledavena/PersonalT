@@ -10,6 +10,7 @@ public class BMI {
 
     double goal;
 
+    public BMI() {}
     public BMI(double height, double weight) {
         this.height = height;
         this.weight = weight;

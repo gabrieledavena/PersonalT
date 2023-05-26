@@ -2,14 +2,18 @@ package com.example.personal;
 
 import com.example.personal.ExerciseneweditController;
 import com.example.personal.BasicClass.Exercise;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -132,4 +136,19 @@ public class GymController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void save() {
+        try {
+            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/exercises.json")
+            if (file != null) {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.registerModule(new JavaTimeModule());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(file, getExerciseData());
+            }
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
+        }
+    }
+
 }
