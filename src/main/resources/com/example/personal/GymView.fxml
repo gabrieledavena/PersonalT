@@ -27,6 +27,7 @@
           <Button mnemonicParsing="false" onAction="#edit" text="Edit" />
             <Button mnemonicParsing="false" onAction="#remove" text="Remove" />
             <Button mnemonicParsing="false" onAction="#newexe" text="New" />
+            <Button mnemonicParsing="false" onAction="#save" text="Save" />
         </buttons>
       </ButtonBar>
    </bottom>

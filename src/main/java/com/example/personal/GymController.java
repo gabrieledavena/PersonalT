@@ -48,25 +48,24 @@ public class GymController {
         repetitionColumns.setCellValueFactory(new PropertyValueFactory<>("repetitions"));
         weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
 
-/*
-        File file = new File("");
+        File file = new File("src/main/resources/com/example/personal/exercises.json");
         if (file != null) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
-            List<Exercise> exercises = null;
+
             try {
-                List<Exercise>    exercises = mapper.readValue(file, new TypeReference<>() {});
+                List<Exercise>  exercises = mapper.readValue(file, new TypeReference<>() {});
+                Extable.getItems().addAll(exercises);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            Extable.getItems().addAll(exercises);
-        }*/
+        }
     }
 
     ObservableList<Exercise> getExerciseData() {
         ObservableList<Exercise> exercises = FXCollections.observableArrayList();
-       exercises.add(new Exercise("Panca piana", "petto", 1, 10, 5.0));
-       exercises.add(new Exercise("Flessioni", "Petto", 1, 10, 5.0));
+      // exercises.add(new Exercise("Panca piana", "petto", 1, 10, 5.0));
+       //exercises.add(new Exercise("Flessioni", "Petto", 1, 10, 5.0));
         return exercises;
     }
 
@@ -152,9 +151,10 @@ public class GymController {
         }
     }
 
+    @FXML
     void save() {
         try {
-            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/exercises.json");
+            File file = new File("src/main/resources/com/example/personal/exercises.json");
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
