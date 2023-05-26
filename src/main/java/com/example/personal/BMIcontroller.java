@@ -37,6 +37,7 @@ public class BMIcontroller {
 
 
     public void initialize () {
+        BMIbar.setStyle("-fx-accent: #6c9a43;");
 
         try {
              File file = new File("src/main/resources/com/example/personal/bmi.json");
@@ -70,20 +71,22 @@ public class BMIcontroller {
 
             if (bmi.getBMIvalue()>=40) {
                 statusLabel.setText("Obesità di ||| classe");
+                BMIbar.setStyle("-fx-accent: #f62206;");
             }else if (bmi.getBMIvalue()>=35) {
                 statusLabel.setText("Obesità di || classe");
+                BMIbar.setStyle("-fx-accent: #f77f16;");
             }else if (bmi.getBMIvalue()>30) {
                 statusLabel.setText("Obesità di | classe");
+                BMIbar.setStyle("-fx-accent: #fad955;");
             } else if (bmi.getBMIvalue()>=25 ) {
                 statusLabel.setText("Sovrappeso");
+                BMIbar.setStyle("-fx-accent: #79f19e;");
             } else if (bmi.getBMIvalue()>=18.5) {
                 statusLabel.setText("Normopeso");
-            } else if (bmi.getBMIvalue()>17) {
+                BMIbar.setStyle("-fx-accent: #007b00;");
+            } else {
                 statusLabel.setText("Sottopeso");
-            } else if (bmi.getBMIvalue()>16) {
-                statusLabel.setText("Visibilmente Sottopeso");
-            } else if (bmi.getBMIvalue()<15.9) {
-                statusLabel.setText("Gravemente Sottopeso");
+                BMIbar.setStyle("-fx-accent: #9dbff6;");
             }
 
             BMIbar.progressProperty().set(bmi.getBMIvalue()/40);

@@ -38,7 +38,7 @@
             <Label text="Genere" GridPane.rowIndex="2" />
             <Label text="Indirizzo" GridPane.rowIndex="3" />
             <Label text="Città" GridPane.rowIndex="4" />
-            <Label text="Birthday" GridPane.rowIndex="6" />
+            <Label text="Età" GridPane.rowIndex="6" />
          <Label text="Codice Postale" GridPane.rowIndex="5" />
          <TextField fx:id="postalCodeField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          <TextField fx:id="AgeField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
