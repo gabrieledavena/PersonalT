@@ -31,7 +31,7 @@ public class ContatoreviewController {
         }
 
         // Scegli la porta seriale da utilizzare (es. "COM3" per Windows)
-        String selectedPort = "COM4";
+        String selectedPort = "/dev/cu.usbmodem14401";
         SerialPort serialPort = SerialPort.getCommPort(selectedPort);
         if (serialPort.openPort()) {
             System.out.println("Connessione seriale aperta su " + selectedPort);
