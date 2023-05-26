@@ -39,7 +39,7 @@ public class BMIcontroller {
     public void initialize () {
 
         try {
-             File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/bmi.json");
+             File file = new File("src/main/resources/com/example/personal/bmi.json");
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
@@ -124,7 +124,7 @@ public class BMIcontroller {
     @FXML
     void handleSave() {
         try {
-            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/bmi.json");
+            File file = new File("src/main/resources/com/example/personal/bmi.json");
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());

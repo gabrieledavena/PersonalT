@@ -2,6 +2,7 @@ package com.example.personal;
 
 import com.example.personal.ExerciseneweditController;
 import com.example.personal.BasicClass.Exercise;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.stage.Modality;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -45,7 +47,20 @@ public class GymController {
         seriesColumn.setCellValueFactory(new PropertyValueFactory<>("series"));
         repetitionColumns.setCellValueFactory(new PropertyValueFactory<>("repetitions"));
         weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
-        Extable.setItems(getExerciseData());
+
+/*
+        File file = new File("");
+        if (file != null) {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
+            List<Exercise> exercises = null;
+            try {
+                List<Exercise>    exercises = mapper.readValue(file, new TypeReference<>() {});
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Extable.getItems().addAll(exercises);
+        }*/
     }
 
     ObservableList<Exercise> getExerciseData() {
@@ -137,14 +152,13 @@ public class GymController {
         }
     }
 
-    @FXML
     void save() {
         try {
-            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/exercises.json")
+            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/exercises.json");
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, getExerciseData());
+                mapper.writerWithDefaultPrettyPrinter().writeValue(file, Extable.getItems());
             }
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
