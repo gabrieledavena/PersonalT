@@ -64,7 +64,7 @@ public class PersonalController {
         showPersonDetails(null);
         try {
 
-            File file = new File("/Users/gabrieledavena/IdeaProjects/PersonalT/src/main/resources/com/example/personal/Pe1.json");
+            File file = new File("src/main/resources/com/example/personal/Pe1.json");
             if (file != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
