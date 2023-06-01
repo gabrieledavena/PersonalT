@@ -47,10 +47,10 @@
                   </Label>
                </children>
             </GridPane>
-            <Button layoutX="525.0" layoutY="136.0" mnemonicParsing="false" onAction="#weightplus" prefHeight="32.0" prefWidth="33.0" text="+" />
-            <Button layoutX="449.0" layoutY="136.0" mnemonicParsing="false" onAction="#weightminus" prefHeight="32.0" prefWidth="33.0" text="-" />
-            <Button layoutX="525.0" layoutY="74.0" mnemonicParsing="false" onAction="#heightplus" prefHeight="32.0" prefWidth="33.0" text="+" />
-            <Button layoutX="449.0" layoutY="74.0" mnemonicParsing="false" onAction="#heightminus" prefHeight="32.0" prefWidth="33.0" text="-" />
+            <Button layoutX="525.0" layoutY="136.0" mnemonicParsing="false" onAction="#weightplus" prefHeight="32.0" prefWidth="33.0" style="-fx-background-radius: 50em; -fx-background-color: #000000;" text="+" textFill="WHITE" />
+            <Button layoutX="449.0" layoutY="136.0" mnemonicParsing="false" onAction="#weightminus" prefHeight="32.0" prefWidth="33.0" style="-fx-background-radius: 50em; -fx-background-color: #000000;" text="-" textFill="WHITE" />
+            <Button layoutX="525.0" layoutY="74.0" mnemonicParsing="false" onAction="#heightplus" prefHeight="32.0" prefWidth="33.0" style="-fx-background-radius: 50em; -fx-background-color: #000000; -fx-wrap-text: true;" text="+" textFill="WHITE" />
+            <Button layoutX="449.0" layoutY="74.0" mnemonicParsing="false" onAction="#heightminus" prefHeight="32.0" prefWidth="33.0" style="-fx-background-radius: 50em; -fx-background-color: #000000;" text="-" textFill="WHITE" />
             <Label layoutX="333.0" layoutY="244.0" text="BMI">
                <font>
                   <Font name="System Bold" size="17.0" />
@@ -76,7 +76,7 @@
                   <Font name="System Bold" size="19.0" />
                </font></Label>
             <ProgressBar fx:id="BMIbar" layoutX="-23.0" layoutY="154.0" prefHeight="92.0" prefWidth="300.0" rotate="-90.0" />
-            <Button layoutX="555.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+            <Button fx:id="SaveButton" layoutX="545.0" layoutY="7.0" mnemonicParsing="false" onAction="#handleSave" style="-fx-border-color: #32CD32; -fx-border-width: 1.5;" text="Save" />
             <Line endX="84.5" layoutX="99.0" layoutY="212.0" startX="-79.5" strokeWidth="4.0" />
             <Line endX="87.30000305175781" layoutX="98.0" layoutY="167.0" startX="-79.5" strokeWidth="4.0" />
             <Label layoutX="17.0" layoutY="256.0" text="Sottopeso" />

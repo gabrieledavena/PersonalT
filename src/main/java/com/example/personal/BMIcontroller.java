@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.FileChooser;
@@ -32,6 +33,9 @@ public class BMIcontroller {
 
     @FXML
     private ProgressBar BMIbar;
+
+    @FXML
+    private Button SaveButton;
 
     BMI bmi=new BMI(185, 70);
 
@@ -101,6 +105,8 @@ public class BMIcontroller {
         BMI modified = new BMI( getBMIdetails().getHeight(), getBMIdetails().getWeight()+1);
         setBMIDATA(modified);
         showBMIdetails(getBMIdetails());
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
+
     }
 
     @FXML
@@ -108,6 +114,7 @@ public class BMIcontroller {
         BMI modified = new BMI( getBMIdetails().getHeight(), getBMIdetails().getWeight()-1);
         setBMIDATA(modified);
         showBMIdetails(getBMIdetails());
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
     }
 
     @FXML
@@ -115,6 +122,7 @@ public class BMIcontroller {
         BMI modified = new BMI( getBMIdetails().getHeight()+1, getBMIdetails().getWeight());
         setBMIDATA(modified);
         showBMIdetails(getBMIdetails());
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
     }
 
     @FXML
@@ -122,6 +130,7 @@ public class BMIcontroller {
         BMI modified = new BMI( getBMIdetails().getHeight()-1, getBMIdetails().getWeight());
         setBMIDATA(modified);
         showBMIdetails(getBMIdetails());
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
     }
 
     @FXML
@@ -136,6 +145,7 @@ public class BMIcontroller {
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
         }
+        SaveButton.setStyle("-fx-border-color: #32CD32; -fx-border-width: 1.5");
     }
 
 

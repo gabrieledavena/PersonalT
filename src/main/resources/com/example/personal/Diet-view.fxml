@@ -84,18 +84,23 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="125.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="147.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label prefHeight="17.0" prefWidth="134.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label prefHeight="17.0" prefWidth="126.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="139.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="144.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Label prefHeight="17.0" prefWidth="139.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label prefHeight="17.0" prefWidth="158.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="127.0" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="108.0" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label prefHeight="17.0" prefWidth="123.0" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Label prefHeight="17.0" prefWidth="187.0" text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="137.0" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="137.0" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Label prefHeight="17.0" prefWidth="222.0" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Label prefHeight="17.0" prefWidth="145.0" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Label prefHeight="17.0" prefWidth="107.0" text="Label" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
