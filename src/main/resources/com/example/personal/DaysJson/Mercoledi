@@ -1,0 +1,17 @@
+[ {
+  "name" : "Pasta",
+  "Meal" : "Pranzo",
+  "protein" : 20.0,
+  "calories" : 50.0,
+  "fat" : 10.0,
+  "quantity" : 150.0,
+  "meal" : "Pranzo"
+}, {
+  "name" : "Acciughe",
+  "Meal" : "Pranzo",
+  "protein" : 20.0,
+  "calories" : 50.0,
+  "fat" : 10.0,
+  "quantity" : 150.0,
+  "meal" : "Pranzo"
+} ]

@@ -84,8 +84,8 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="17.0" prefWidth="125.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label prefHeight="17.0" prefWidth="147.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="Lc" prefHeight="17.0" prefWidth="125.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="Lp" prefHeight="17.0" prefWidth="147.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label prefHeight="17.0" prefWidth="134.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Label prefHeight="17.0" prefWidth="126.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label prefHeight="17.0" prefWidth="139.0" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />

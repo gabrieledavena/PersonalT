@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class PersonalApplication extends Application {
+
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PersonalApplication.class.getResource("Mainview.fxml"));

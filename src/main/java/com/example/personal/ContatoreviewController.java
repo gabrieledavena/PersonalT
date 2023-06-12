@@ -8,6 +8,7 @@ import com.fazecast.jSerialComm.SerialPort;
 import com.fazecast.jSerialComm .*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.*;
@@ -49,6 +50,11 @@ public class ContatoreviewController {
     @FXML
     private Label weightLabel;
 
+    @FXML
+    private Button nextButton;
+
+    @FXML
+    private Button previousButton;
     List<Exercise> exercises= null;
 
     int variable=1;
@@ -119,7 +125,7 @@ public class ContatoreviewController {
       //  countrep.
 
 
-
+    previousButton.setDisable(true);
     }
     public void showex(Exercise esercizi){
         nameLabel.setText(esercizi.getName());
@@ -136,8 +142,20 @@ public class ContatoreviewController {
 
     @FXML
     public void next(){
-        i++;
+        if (i!=exercises.size())    i++;
         showex(getexercisefrom(exercises));
+        if (i== exercises.size()) {
+            nextButton.setDisable(true);
+        }
+        previousButton.setDisable(true);
 
+    }
+
+    @FXML
+    public void previous(){
+        if (i==1) previousButton.setDisable(true);
+        if (i!=0) i--;
+        showex(getexercisefrom(exercises));
+        nextButton.setDisable(false);
     }
 }

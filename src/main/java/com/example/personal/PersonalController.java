@@ -184,15 +184,11 @@ return person;
         sidePane.setCenter(view);
     }
 
-    /*void openDietaview (Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PersonalApplication.class.getResource("Dietview.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1150, 450);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(550);
-        stage.setTitle("Dieta");
-        stage.setScene(scene);
-        stage.show();
-    }*/
+    @FXML
+    void openDietaview () throws IOException {
+        BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("provadieta.fxml")));
+        sidePane.setCenter(view);
+    }
 
     @FXML
     void handleSaveAs() {
@@ -211,6 +207,7 @@ return person;
                 new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
             }
     }
+
 
     @FXML
     private void handleExit() {
