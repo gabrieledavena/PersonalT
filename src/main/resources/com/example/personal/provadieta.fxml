@@ -30,7 +30,7 @@
         <items>
             <TableView fx:id="diettable" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="MealColumn" prefWidth="75.0" text="PASTO" />
+                <TableColumn fx:id="MealTypeColumn" prefWidth="75.0" text="PASTO" />
                 <TableColumn fx:id="NameColumn" prefWidth="75.0" text="CIBO" />
                   <TableColumn fx:id="QuantityColumn" prefWidth="76.09391784667969" text="QUANTITÀ" />
                   <TableColumn fx:id="CaloriesColumn" prefWidth="54.90608215332031" text="CALORIE" />
@@ -66,8 +66,8 @@
                   <HBox layoutY="330.0" prefHeight="42.0" prefWidth="186.0">
                      <children>
                         <Button mnemonicParsing="false" prefWidth="62.0" text="New" />
-                        <Button mnemonicParsing="false" prefWidth="62.0" text="Delete" />
-                        <Button mnemonicParsing="false" prefWidth="62.0" text="Edit" />
+                        <Button mnemonicParsing="false" onAction="#remove" prefWidth="62.0" text="Delete" />
+                        <Button mnemonicParsing="false" onAction="#edit" prefWidth="62.0" text="Edit" />
                      </children>
                   </HBox>
                   <Button layoutX="124.0" layoutY="13.0" mnemonicParsing="false" onAction="#save" text="Salva" />

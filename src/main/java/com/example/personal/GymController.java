@@ -88,8 +88,6 @@ public class GymController {
         alert.showAndWait();
     }
     public void edit() {
-
-
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("exercisenewedit.fxml"));

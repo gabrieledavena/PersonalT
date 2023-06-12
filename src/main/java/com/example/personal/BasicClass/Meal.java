@@ -2,24 +2,32 @@ package com.example.personal.BasicClass;
 
 public class Meal {
     public String name;
-    public String Meal;
+    public String mealtype;
     public Double protein;
     public Double calories;
     public Double fat;
 
     public Double quantity;
 
-    public Meal(String name, String meal, Double protein, Double calories, Double fat, Double quantity) {
+    public Meal() {}
+
+    public Meal(String name, String mealtype, Double protein, Double calories, Double fat, Double quantity) {
         this.name = name;
-        Meal = meal;
+        this.mealtype = mealtype;
         this.protein = protein;
         this.calories = calories;
         this.fat = fat;
         this.quantity = quantity;
     }
 
-    public Meal() {
 
+    public Meal (Meal other) {
+        this.name=other.name;
+        this.mealtype= other.mealtype;
+        this.protein=other.protein;
+        this.calories=other.calories;
+        this.fat=other.fat;
+        this.quantity=other.quantity;
     }
 
     public String getName() {
@@ -55,12 +63,12 @@ public class Meal {
         this.fat = fat;
     }
 
-    public String getMeal() {
-        return Meal;
+    public String getMealType() {
+        return mealtype;
     }
 
-    public void setMeal(String meal) {
-        Meal = meal;
+    public void setMealType(String mealtype) {
+        this.mealtype = mealtype;
     }
 
     public Double getQuantity() {

@@ -6,11 +6,13 @@ import com.example.personal.BasicClass.Meal;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -18,12 +20,11 @@ import java.util.ArrayList;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class DietController {
 
     ArrayList<String> daysdata = new ArrayList<>();
-
-
     Integer Day =0;
 
 
@@ -42,20 +43,16 @@ public class DietController {
 
     @FXML
     private TableColumn<Meal, Double> CaloriesColumn;
-
     @FXML
     private TableColumn<Meal, Double> FatColumn;
     @FXML
-    private TableColumn<Meal, String> MealColumn;
+    private TableColumn<Meal, String> MealTypeColumn;
     @FXML
     private TableColumn<Meal, String> NameColumn;
-
     @FXML
     private TableColumn<Meal, Double> ProteinColumn;
-
     @FXML
     private TableColumn<Meal, Double> QuantityColumn;
-
 
     @FXML
     private TableView<Meal> diettable;
@@ -69,19 +66,16 @@ public class DietController {
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Venerdi");
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Sabato");
 
-        NameColumn. setCellValueFactory(new PropertyValueFactory<>("name"));
-        MealColumn. setCellValueFactory(new PropertyValueFactory<>("Meal"));
+        NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        MealTypeColumn.setCellValueFactory(new PropertyValueFactory<>("MealType"));
         QuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        CaloriesColumn. setCellValueFactory(new PropertyValueFactory<>("calories"));
+        CaloriesColumn.setCellValueFactory(new PropertyValueFactory<>("calories"));
         ProteinColumn.setCellValueFactory(new PropertyValueFactory<>("protein"));
         FatColumn. setCellValueFactory(new PropertyValueFactory<>("fat"));
 
 
-
-
         File file = new File("src/main/resources/com/example/personal/DaysJson/Lunedi");
 
-        if (file != null) {
             ObjectMapper mapper = new ObjectMapper();
             mapper.registerModule(new JavaTimeModule());
             try {
@@ -90,7 +84,6 @@ public class DietController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
         statistics();
     }
 
@@ -141,13 +134,58 @@ public class DietController {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
                 mapper.writerWithDefaultPrettyPrinter().writeValue(file, diettable.getItems());
+            System.out.println(diettable.getItems().get(0).getMealType());
 
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
         }
     }
 
+    void showNoMealSelectedAlert() {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Nessuna selezione");
+        alert.setHeaderText("Non hai selezionato niente");
+        alert.setContentText("Seleziona prima un pasto");
+        alert.showAndWait();
+    }
+    @FXML
+    public void remove() {
+        try {
+            int selectedIndex = selectedIndex();
+            diettable.getItems().remove(selectedIndex);
+        } catch (NoSuchElementException e) {
+            showNoMealSelectedAlert();
+        }
+    }
 
+
+    public void edit() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("dietnewedit.fxml"));
+            DialogPane view = loader.load();
+            DietneweditController controller = loader.getController();
+
+            // Set an empty meal into the controller
+            controller.setMeals(new Meal(diettable.getItems().get(selectedIndex())));
+
+            // Create the dialog
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Nuovo Pasto");
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.setDialogPane(view);
+
+            // Show the dialog and wait until the user closes it
+            Optional<ButtonType> clickedButton = dialog.showAndWait();
+            if (clickedButton.orElse(ButtonType.CLOSE) == ButtonType.APPLY) {
+                diettable.getItems().set(selectedIndex(),controller.getMeals());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 
