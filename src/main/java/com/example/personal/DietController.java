@@ -2,6 +2,7 @@ package com.example.personal;
 
 
 
+
 import com.example.personal.BasicClass.Meal;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -184,7 +185,35 @@ public class DietController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        statistics();
+    }
 
+    @FXML
+    public void newMeal(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("dietnewedit.fxml"));
+            DialogPane view = loader.load();
+            DietneweditController controller = loader.getController();
+
+            // Set an empty person into the controller
+            controller.setMeals(new Meal("", "", 0.0, 0.0, 0.0, 0.0));
+
+            // Create the dialog
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Nuovo Pasto");
+            dialog.initModality(Modality.WINDOW_MODAL);
+            dialog.setDialogPane(view);
+
+            // Show the dialog and wait until the user closes it
+            Optional<ButtonType> clickedButton = dialog.showAndWait();
+            if (clickedButton.orElse(ButtonType.CLOSE) == ButtonType.APPLY) {
+                diettable.getItems().add(controller.getMeals());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        statistics();
     }
 
 

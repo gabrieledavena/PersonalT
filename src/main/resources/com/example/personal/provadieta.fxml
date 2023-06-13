@@ -15,19 +15,19 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.personal.DietController">
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setLunedi" prefHeight="0.0" prefWidth="120.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" text="Lunedì" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setMartedi" prefHeight="0.0" prefWidth="120.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" text="Martedì" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setMercoledi" prefHeight="0.0" prefWidth="120.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" text="Mercoledì" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setGiovedi" prefHeight="0.0" prefWidth="120.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" text="Giovedi" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setVenerdi" prefHeight="0.0" prefWidth="120.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" text="Venerdì" />
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setSabato" prefHeight="0.0" prefWidth="120.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF; -fx-focus-traversable: true;" text="Sabato" />
-         </children>
+
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setLunedi" prefHeight="0.0" prefWidth="120.0" text="Lunedì" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setMartedi" prefHeight="0.0" prefWidth="120.0" text="Martedì" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setMercoledi" prefHeight="0.0" prefWidth="120.0" text="Mercoledì" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setGiovedi" prefHeight="0.0" prefWidth="120.0" text="Giovedi" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setVenerdi" prefHeight="0.0" prefWidth="120.0" text="Venerdì" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#setSabato" prefHeight="0.0" prefWidth="120.0" text="Sabato" />
+
       </HBox>
    </top>
    <center>
       <SplitPane dividerPositions="0.68561872909699" prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <items>
+
             <TableView fx:id="diettable" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="MealTypeColumn" prefWidth="75.0" text="PASTO" />
@@ -42,38 +42,32 @@
                </columnResizePolicy>
             </TableView>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <GridPane layoutX="8.0" layoutY="103.0" prefHeight="73.0" prefWidth="169.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="Grassi" />
-                        <Label text="Calorie" GridPane.rowIndex="1" />
-                        <Label text="Proteine" GridPane.rowIndex="2" />
-                        <Label fx:id="TotalFatLabel" text="Label" GridPane.columnIndex="1" />
-                        <Label fx:id="TotalCaloriesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="TotalProteinLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     </children>
-                  </GridPane>
-                  <Label layoutX="54.0" layoutY="78.0" text="Statistiche totali" />
-                  <HBox layoutY="330.0" prefHeight="42.0" prefWidth="186.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefWidth="62.0" text="New" />
-                        <Button mnemonicParsing="false" onAction="#remove" prefWidth="62.0" text="Delete" />
-                        <Button mnemonicParsing="false" onAction="#edit" prefWidth="62.0" text="Edit" />
-                     </children>
-                  </HBox>
-                  <Button layoutX="124.0" layoutY="13.0" mnemonicParsing="false" onAction="#save" text="Salva" />
-               </children>
-            </AnchorPane>
-        </items>
+              <GridPane layoutX="8.0" layoutY="103.0" prefHeight="73.0" prefWidth="169.0">
+                  <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                  </columnConstraints>
+                  <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  </rowConstraints>
+                  <Label text="Grassi"/>
+                  <Label text="Calorie" GridPane.rowIndex="1"/>
+                  <Label text="Proteine" GridPane.rowIndex="2"/>
+                  <Label fx:id="TotalFatLabel" text="Label" GridPane.columnIndex="1"/>
+                  <Label fx:id="TotalCaloriesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                  <Label fx:id="TotalProteinLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+              </GridPane>
+              <Label layoutX="54.0" layoutY="78.0" text="Statistiche totali"/>
+              <HBox layoutY="330.0" prefHeight="42.0" prefWidth="186.0">
+                  <Button mnemonicParsing="false" onAction="#newMeal" prefWidth="62.0" text="New"/>
+                  <Button mnemonicParsing="false" onAction="#remove" prefWidth="62.0" text="Delete"/>
+                  <Button mnemonicParsing="false" onAction="#edit" prefWidth="62.0" text="Edit"/>
+              </HBox>
+              <Button layoutX="124.0" layoutY="13.0" mnemonicParsing="false" onAction="#save" text="Salva"/>
+          </AnchorPane>
+
       </SplitPane>
    </center>
 </BorderPane>

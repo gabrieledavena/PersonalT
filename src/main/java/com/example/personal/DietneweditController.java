@@ -1,13 +1,12 @@
 package com.example.personal;
 
 import com.example.personal.BasicClass.Meal;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
+
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
-import java.util.EventListener;
 
 public class DietneweditController {
 
@@ -40,6 +39,7 @@ public class DietneweditController {
         ProteinField.textProperty().addListener((observable, oldValue, newValue) -> meals.setProtein(Double.valueOf(newValue)));
         QuantityField.textProperty().addListener((observable, oldValue, newValue) -> meals.setQuantity(Double.parseDouble(newValue)));
         MealChoiceBox.getItems().addAll(mealtypes);
+        MealChoiceBox.valueProperty().addListener((observableValue, oldvalue, newvalue) -> meals.setMealType(newvalue));
     }
 
     void update() {
@@ -48,13 +48,10 @@ public class DietneweditController {
         NameField.textProperty().set(String.valueOf(meals.getName()));
         ProteinField.textProperty().set(String.valueOf(meals.getProtein()));
         QuantityField.textProperty().set(String.valueOf(meals.getQuantity()));
-        MealChoiceBox.converterProperty().addListener((observable) -> meals.setMealType(MealChoiceBox.getValue()));
+        MealChoiceBox.valueProperty().set(meals.getMealType());
 
     }
 
-    public void getMealTypes(ActionEvent event) {
-        String myMeal=MealChoiceBox.getValue();
-    }
 
     public Meal getMeals() {
         return meals;
