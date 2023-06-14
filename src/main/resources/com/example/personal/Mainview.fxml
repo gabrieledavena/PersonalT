@@ -28,11 +28,6 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
    </top>
@@ -144,7 +139,7 @@
                   <Button fx:id="bmiButton" layoutX="413.0" layoutY="130.0" mnemonicParsing="false" onAction="#openBMIview" prefHeight="60.0" prefWidth="60.0" text="BMI" />
                   <Button fx:id="DietButton" layoutX="413.0" layoutY="205.0" mnemonicParsing="false" onAction="#openDietaview" prefHeight="60.0" prefWidth="60.0" text="Dieta" />
                   <Button fx:id="recordCardButton" layoutX="413.0" layoutY="280.0" mnemonicParsing="false" onAction="#openGymview" prefHeight="60.0" prefWidth="60.0" text="Scheda" />
-                  <Button fx:id="Contatore" layoutX="417.0" layoutY="357.0" mnemonicParsing="false" onAction="#openContatoreview" text="Contatore" />
+                  <Button fx:id="Contatore" layoutX="413.0" layoutY="354.0" mnemonicParsing="false" onAction="#openContatoreview" text="Contatore" />
                </children>
             </AnchorPane>
             <BorderPane fx:id="sidePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" />

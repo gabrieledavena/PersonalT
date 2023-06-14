@@ -1,13 +1,13 @@
 [ {
   "name" : "Panca piana",
-  "muscleGroup" : "Petto",
+  "muscleGroup" : "Glutei",
   "series" : 1,
-  "repetitions" : 10,
+  "repetitions" : 2,
   "weight" : 5.0
 }, {
   "name" : "Flessioni",
   "muscleGroup" : "Petto",
-  "series" : 1,
-  "repetitions" : 10,
+  "series" : 2,
+  "repetitions" : 3,
   "weight" : 5.0
 } ]

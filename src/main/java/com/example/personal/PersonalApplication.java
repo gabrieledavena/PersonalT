@@ -15,8 +15,10 @@ public class PersonalApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PersonalApplication.class.getResource("Mainview.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1150, 450);
-        stage.setMinWidth(1200);
-        stage.setMinHeight(550);
+        stage.setMinWidth(1150);
+        stage.setMinHeight(450);
+        stage.setMaxWidth(1150);
+        stage.setMaxHeight(450);
         stage.getIcons().add(new Image("com/example/personal/images/shrek avatar.jpg"));
         stage.setTitle("Personal Trainer");
         stage.setScene(scene);

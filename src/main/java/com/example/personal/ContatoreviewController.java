@@ -10,11 +10,14 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.animation.AnimationTimer;
 
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
-
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.util.Enumeration;
 import java.util.concurrent.CountDownLatch;
 
@@ -22,6 +25,8 @@ public class ContatoreviewController {
 
     @FXML
     private Label count;
+    @FXML
+    private Label finallabel;
 
     @FXML
     private Label countrep;
@@ -55,19 +60,23 @@ public class ContatoreviewController {
 
     @FXML
     private Button previousButton;
+    @FXML
+    private Label cronolab;
     List<Exercise> exercises= null;
 
-    int variable=1;
+    int variable=0;
+    int seriecount=0;
     int i=0;
     @FXML
     public void initialize() {
+        finallabel.setVisible(false);
         SerialPort[] ports = SerialPort.getCommPorts();
         System.out.println("Elenco porte seriale disponibili:");
         for (SerialPort port : ports) {
             System.out.println(port.getSystemPortName());
         }
         // Scegli la porta seriale da utilizzare (es. "COM3" per Windows)
-        String selectedPort = "COM4";
+        String selectedPort = "COM3";
         SerialPort serialPort = SerialPort.getCommPort(selectedPort);
         if (serialPort.openPort()) {
             System.out.println("Connessione seriale aperta su " + selectedPort);
@@ -78,9 +87,10 @@ public class ContatoreviewController {
         serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
         // Aggiungi un listener per gestire gli eventi di ricezione dati
         serialPort.addDataListener(new SerialPortDataListener() {  public int getListeningEvents() {
-            System.out.println("2");
             return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
             }
+
+
             public void serialEvent(SerialPortEvent event) {
 
                 if (event.getEventType() == SerialPort.LISTENING_EVENT_DATA_AVAILABLE) {
@@ -104,10 +114,28 @@ public class ContatoreviewController {
 
 
 
-                    Platform.runLater(() -> {count.setText(String.valueOf(variable));});
+
+
+                    Platform.runLater(() -> {count.setText(String.valueOf(variable) + "/"+ String.valueOf(exercises.get(i).getRepetitions()));});
+                    Platform.runLater(() -> {serie.setText(String.valueOf(seriecount) + "/"+ String.valueOf(exercises.get(i).getSeries()));});
+                    Platform.runLater( () -> {if(variable>exercises.get(i).getRepetitions()-1) {
+                        variable=0;
+                        seriecount++;
+                        if(seriecount>(exercises.get(i).getSeries())-1){
+                            if(i!=exercises.size()-1){
+                                seriecount=0;
+                                next();
+                            }else {
+                                finallabel.setVisible(true);
+                            }
+
+
+                        }
+                    }});
                 }
             }
         });
+
 
         File file = new File("src/main/resources/com/example/personal/exercises.json");
         if (file != null) {
@@ -122,7 +150,7 @@ public class ContatoreviewController {
         }
         showex(getexercisefrom(exercises));
 
-      //  countrep.
+
 
 
     previousButton.setDisable(true);
@@ -140,14 +168,18 @@ public class ContatoreviewController {
 
     }
 
+
     @FXML
     public void next(){
+
         if (i!=exercises.size())    i++;
         showex(getexercisefrom(exercises));
-        if (i== exercises.size()) {
+        if (i== exercises.size()-1) {
+
             nextButton.setDisable(true);
         }
-        previousButton.setDisable(true);
+
+        previousButton.setDisable(false);
 
     }
 
@@ -159,3 +191,7 @@ public class ContatoreviewController {
         nextButton.setDisable(false);
     }
 }
+
+
+
+
