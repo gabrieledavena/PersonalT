@@ -12,16 +12,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 public class DietController {
 
@@ -58,6 +55,9 @@ public class DietController {
     @FXML
     private TableView<Meal> diettable;
 
+    @FXML
+    private Button SaveButton;
+
 
     public void initialize() {
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Lunedi");
@@ -75,6 +75,40 @@ public class DietController {
         FatColumn. setCellValueFactory(new PropertyValueFactory<>("fat"));
 
 
+
+        MealTypeColumn.setComparator(sortTableView());
+        MealTypeColumn.setCellFactory(column -> {
+            return new TableCell<>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    if (item == null || empty) {
+                        setText(null);
+                        setStyle("");
+                    } else {
+                        setText(item);
+
+                        // Imposta lo stile CSS per il colore della cella
+                        if (item.equalsIgnoreCase("Colazione")) {
+                            setTextFill(Color.CHOCOLATE);
+                        } else if (item.equalsIgnoreCase("Pranzo")) {
+                            setTextFill(Color.RED);
+                        } else if (item.equalsIgnoreCase("Merenda")) {
+                            setTextFill(Color.DARKCYAN);
+                        } else if (item.equalsIgnoreCase("Cena")) {
+                            setTextFill(Color.BLUE);
+                        } else {
+                            setTextFill(Color.BLACK);
+                        }
+                    }
+                }
+            };
+        });
+
+
+
+
         File file = new File("src/main/resources/com/example/personal/DaysJson/Lunedi");
 
             ObjectMapper mapper = new ObjectMapper();
@@ -86,6 +120,8 @@ public class DietController {
                 throw new RuntimeException(e);
             }
         statistics();
+        SaveButton.setStyle("-fx-border-color: #32CD32; -fx-border-width: 1.5");
+        setsort();
     }
 
     public void statistics() {
@@ -103,6 +139,11 @@ public class DietController {
 
     }
 
+    public void setsort() {
+        diettable.getSortOrder().add(MealTypeColumn);
+        MealTypeColumn.setSortType(TableColumn.SortType.ASCENDING);
+    }
+
     public void changeDay (Integer Day) {
 
 
@@ -116,7 +157,9 @@ public class DietController {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            setsort();
             statistics();
+            SaveButton.setStyle("-fx-border-color: #32CD32; -fx-border-width: 1.5");
     }
 
 
@@ -140,6 +183,7 @@ public class DietController {
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
         }
+        SaveButton.setStyle("-fx-border-color: #32CD32; -fx-border-width: 1.5");
     }
 
     void showNoMealSelectedAlert() {
@@ -157,6 +201,8 @@ public class DietController {
         } catch (NoSuchElementException e) {
             showNoMealSelectedAlert();
         }
+
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
     }
 
 
@@ -186,6 +232,9 @@ public class DietController {
             e.printStackTrace();
         }
         statistics();
+        setsort();
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
+
     }
 
     @FXML
@@ -214,6 +263,25 @@ public class DietController {
             e.printStackTrace();
         }
         statistics();
+        setsort();
+        SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
+
+    }
+
+    private Comparator<String> sortTableView() {
+        return (item1, item2) -> {
+            if (item1.equals("Colazione")) {
+                return item2.equals("Colazione") ? 0 : -1;
+            } else if (item1.equals("Pranzo")) {
+                return item2.equals("Colazione") ? 1 : (item2.equals("Pranzo") ? 0 : -1);
+            } else if (item1.equals("Merenda")) {
+                return item2.equals("Cena") ? -1 : (item2.equals("Merenda") ? 0 : 1);
+            } else if (item1.equals("Cena")) {
+                return item2.equals("Cena") ? 0 : 1;
+            } else {
+                return 0;
+            }
+        };
     }
 
 

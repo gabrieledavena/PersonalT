@@ -57,6 +57,9 @@ public class PersonalController {
     @FXML
     private Button Contatore;
 
+    @FXML
+    private Button DietButton;
+
     Person person = new Person("Shrek", "3", "Palude", "Orco", 999, "Far far away", 24);
 
     @FXML
@@ -163,6 +166,7 @@ return person;
         bmiButton.setDisable(true);
         recordCardButton.setDisable(false);
         Contatore.setDisable(false);
+        DietButton.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BMIview.fxml")));
         sidePane.setCenter(view);
     }
@@ -171,6 +175,7 @@ return person;
         Contatore.setDisable(true);
         recordCardButton.setDisable(false);
         bmiButton.setDisable(false);
+        DietButton.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Contatoreview.fxml")));
         sidePane.setCenter(view);
     }
@@ -180,6 +185,7 @@ return person;
         recordCardButton.setDisable(true);
         bmiButton.setDisable(false);
         Contatore.setDisable(false);
+        DietButton.setDisable(false);
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("GymView.fxml")));
         sidePane.setCenter(view);
     }
@@ -188,6 +194,11 @@ return person;
     void openDietaview () throws IOException {
         BorderPane view = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("provadieta.fxml")));
         sidePane.setCenter(view);
+        bmiButton.setDisable(false);
+        Contatore.setDisable(false);
+        DietButton.setDisable(true);
+        recordCardButton.setDisable(false);
+
     }
 
     @FXML

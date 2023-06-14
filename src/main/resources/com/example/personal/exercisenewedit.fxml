@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -37,10 +38,10 @@
                         <Label text="Ripetizioni" GridPane.rowIndex="3" />
                         <Label text="Peso" GridPane.rowIndex="4" />
                         <TextField fx:id="esercizioField" GridPane.columnIndex="1" />
-                        <TextField fx:id="muscolareField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="SerieField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="ripetizioniField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="pesoField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ChoiceBox fx:id="muscolarChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>
