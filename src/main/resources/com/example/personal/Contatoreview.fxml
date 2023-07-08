@@ -38,8 +38,8 @@
                   <Label fx:id="weightLabel" alignment="CENTER" prefHeight="65.0" prefWidth="143.0" style="-fx-border-color: #101010;" text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <Label layoutX="51.0" layoutY="169.0" text="Crono" />
-            <Label fx:id="crono" layoutX="54.0" layoutY="207.0" text="Label" />
+            <Label layoutX="68.0" layoutY="169.0" text="Crono" />
+            <Label fx:id="crono" layoutX="70.0" layoutY="207.0" text="Label" />
             <GridPane layoutX="184.0" layoutY="200.0" prefHeight="30.0" prefWidth="233.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -78,6 +78,9 @@
                   <Font size="52.0" />
                </font>
             </Label>
+            <Button layoutX="4.0" layoutY="203.0" mnemonicParsing="false" onAction="#avviaCronometro" text="Avvia" />
+            <Button layoutX="107.0" layoutY="203.0" mnemonicParsing="false" onAction="#fermaCronometro" text="Ferma" />
+            <Button layoutX="58.0" layoutY="243.0" mnemonicParsing="false" onAction="#resetcronometro" text="Reset" />
          </children>
       </AnchorPane>
    </center>

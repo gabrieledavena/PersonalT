@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fazecast.jSerialComm.SerialPort;
-import com.fazecast.jSerialComm .*;
+import com.fazecast.jSerialComm.*;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,8 +20,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.Enumeration;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public class ContatoreviewController {
+public class ContatoreviewController extends Thread {
 
     @FXML
     private Label count;
@@ -36,6 +39,7 @@ public class ContatoreviewController {
 
     @FXML
     private Label crono;
+
 
     @FXML
     private Label musclelabel;
@@ -62,13 +66,17 @@ public class ContatoreviewController {
     private Button previousButton;
     @FXML
     private Label cronolab;
-    List<Exercise> exercises= null;
+    List<Exercise> exercises = null;
+    boolean isRunning;
 
-    int variable=0;
-    int seriecount=0;
-    int i=0;
+    int seconds;
+    int variable = 0;
+    int seriecount = 0;
+    int i = 0;
+
     @FXML
     public void initialize() {
+
         finallabel.setVisible(false);
         SerialPort[] ports = SerialPort.getCommPorts();
         System.out.println("Elenco porte seriale disponibili:");
@@ -86,10 +94,10 @@ public class ContatoreviewController {
         // Imposta i parametri della porta seriale
         serialPort.setComPortParameters(9600, 8, 1, SerialPort.NO_PARITY);
         // Aggiungi un listener per gestire gli eventi di ricezione dati
-        serialPort.addDataListener(new SerialPortDataListener() {  public int getListeningEvents() {
-            return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
+        serialPort.addDataListener(new SerialPortDataListener() {
+            public int getListeningEvents() {
+                return SerialPort.LISTENING_EVENT_DATA_AVAILABLE;
             }
-
 
             public void serialEvent(SerialPortEvent event) {
 
@@ -101,7 +109,8 @@ public class ContatoreviewController {
                     String receivedData = new String(newData);
                     if (receivedData.trim().equals("1")) {
                         // Aggiungi 1 al valore della variabile
-                         // Valore iniziale della variabile
+                        // Valore iniziale della variabile
+
                         variable += 1;
                         System.out.println("Valore variabile aggiornato: " + variable);
                     }
@@ -112,26 +121,37 @@ public class ContatoreviewController {
                         System.out.println("Valore variabile aggiornato: " + variable);
                     }
 
-
-
-
-
-                    Platform.runLater(() -> {count.setText(String.valueOf(variable) + "/"+ String.valueOf(exercises.get(i).getRepetitions()));});
-                    Platform.runLater(() -> {serie.setText(String.valueOf(seriecount) + "/"+ String.valueOf(exercises.get(i).getSeries()));});
-                    Platform.runLater( () -> {if(variable>exercises.get(i).getRepetitions()-1) {
-                        variable=0;
-                        seriecount++;
-                        if(seriecount>(exercises.get(i).getSeries())-1){
-                            if(i!=exercises.size()-1){
-                                seriecount=0;
-                                next();
-                            }else {
-                                finallabel.setVisible(true);
+                    Platform.runLater(() -> {
+                        count.setText(String.valueOf(variable) + "/" + String.valueOf(exercises.get(i).getRepetitions()));
+                        fermaCronometro();
+                        resetcronometro();
+                    });
+                    Platform.runLater(() -> {
+                        serie.setText(String.valueOf(seriecount) + "/" + String.valueOf(exercises.get(i).getSeries()));
+                    });
+                    Platform.runLater(() -> {
+                        if (variable > exercises.get(i).getRepetitions() - 1) {
+                            variable = 0;
+                            seriecount++;
+                            if (seriecount == exercises.get(i).getSeries()) {
+                                serie.setText(String.valueOf(seriecount) + "/" + String.valueOf(exercises.get(i).getSeries()));
+                                avviaCronometro();
                             }
 
 
+                            if (seriecount > (exercises.get(i).getSeries()) - 1) {
+                                if (i != exercises.size() - 1) {
+                                    seriecount = 0;
+
+                                    next();
+                                } else {
+                                    finallabel.setVisible(true);
+                                }
+
+
+                            }
                         }
-                    }});
+                    });
                 }
             }
         });
@@ -143,38 +163,40 @@ public class ContatoreviewController {
             mapper.registerModule(new JavaTimeModule());
 
             try {
-                exercises = mapper.readValue(file, new TypeReference<>() {});
+                exercises = mapper.readValue(file, new TypeReference<>() {
+                });
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
         showex(getexercisefrom(exercises));
+        crono.setText("0 : 00");
 
 
-
-
-    previousButton.setDisable(true);
+        previousButton.setDisable(true);
     }
-    public void showex(Exercise esercizi){
+
+    public void showex(Exercise esercizi) {
         nameLabel.setText(esercizi.getName());
         musclelabel.setText(esercizi.getMuscleGroup());
         repetitionLabel.setText(String.valueOf(esercizi.getRepetitions()));
         seriesLabel.setText(String.valueOf(esercizi.getSeries()));
         weightLabel.setText(String.valueOf(esercizi.getWeight()));
     }
-    Exercise getexercisefrom(List <Exercise> exercises){
-        return  exercises.get(i);
+
+    Exercise getexercisefrom(List<Exercise> exercises) {
+        return exercises.get(i);
 
 
     }
 
 
     @FXML
-    public void next(){
+    public void next() {
 
-        if (i!=exercises.size())    i++;
+        if (i != exercises.size()) i++;
         showex(getexercisefrom(exercises));
-        if (i== exercises.size()-1) {
+        if (i == exercises.size() - 1) {
 
             nextButton.setDisable(true);
         }
@@ -184,11 +206,47 @@ public class ContatoreviewController {
     }
 
     @FXML
-    public void previous(){
-        if (i==1) previousButton.setDisable(true);
-        if (i!=0) i--;
+    public void previous() {
+        if (i == 1) previousButton.setDisable(true);
+        if (i != 0) i--;
         showex(getexercisefrom(exercises));
         nextButton.setDisable(false);
+    }
+
+    @FXML
+    private void avviaCronometro() {
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        if (isRunning) {
+            executor.shutdown();
+        }
+        isRunning = true;
+        executor.scheduleAtFixedRate(() -> {
+            if (isRunning) {
+                seconds++;
+                Platform.runLater(() -> {
+                    if (seconds % 60 < 10) {
+                        crono.setText(String.format("%d : 0%d", seconds / 60, seconds % 60));
+                    } else {
+                        crono.setText(String.format("%d : %d", seconds / 60, seconds % 60));
+                    }
+                });
+
+            } else executor.shutdown();
+        }, 0, 1000, TimeUnit.MILLISECONDS);
+    }
+
+    @FXML
+    private void fermaCronometro() {
+        isRunning = false;
+
+    }
+
+    @FXML
+    private void resetcronometro() {
+        //isRunning = false;
+        seconds = 0;
+        crono.setText("0 : 00");
+
     }
 }
 

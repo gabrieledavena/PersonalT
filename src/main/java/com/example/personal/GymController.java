@@ -77,9 +77,6 @@ public class GymController {
         return selectedIndex;
     }
 
-    /**
-     * Shows a simple warning dialog
-     */
     void showNoPersonSelectedAlert() {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Nessuna selezione");
