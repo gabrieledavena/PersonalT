@@ -1,7 +1,6 @@
 package com.example.personal;
 
 import com.example.personal.BasicClass.BMI;
-import com.example.personal.BasicClass.Person;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -10,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.stage.FileChooser;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -45,12 +44,12 @@ public class BMIcontroller {
 
         try {
              File file = new File("src/main/resources/com/example/personal/bmi.json");
-            if (file != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.registerModule(new JavaTimeModule());
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
 
-                bmi =mapper.readValue(file, new TypeReference<BMI>() {});
-                showBMIdetails(bmi);            }
+            bmi =mapper.readValue(file, new TypeReference<>() {
+            });
+            showBMIdetails(bmi);
         } catch (IOException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Could not load data").showAndWait();
@@ -70,7 +69,7 @@ public class BMIcontroller {
             weightLabel.setText(String.valueOf(bmi.getWeight()));
             BMILabel.setText(String.valueOf(bmi.getBMIvalue()));
 
-            goalLabel.setText(String.valueOf(bmi.getGoal())+ " kg");
+            goalLabel.setText(bmi.getGoal() + " kg");
             statusLabel.setText("");
 
             if (bmi.getBMIvalue()>=40) {
@@ -137,11 +136,9 @@ public class BMIcontroller {
     void handleSave() {
         try {
             File file = new File("src/main/resources/com/example/personal/bmi.json");
-            if (file != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.registerModule(new JavaTimeModule());
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, getBMIdetails());
-            }
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, getBMIdetails());
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
         }

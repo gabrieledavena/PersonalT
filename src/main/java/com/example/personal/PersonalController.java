@@ -18,7 +18,7 @@ import javafx.stage.Modality;
 import java.io.File;
 
 import java.io.IOException;
-import java.time.LocalDate;
+
 import java.util.*;
 
 
@@ -66,15 +66,13 @@ public class PersonalController {
     public void initialize() {
         showPersonDetails(null);
         try {
-
             File file = new File("src/main/resources/com/example/personal/Pe1.json");
-            if (file != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.registerModule(new JavaTimeModule());
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
 
-                person=mapper.readValue(file, new TypeReference<Person>() {});
+            person=mapper.readValue(file, new TypeReference<>() {
+            });
 
-            }
         } catch (IOException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Could not load data").showAndWait();
@@ -149,7 +147,8 @@ return person;
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
 
-                Person person =mapper.readValue(file, new TypeReference<Person>() {});
+                Person person =mapper.readValue(file, new TypeReference<>() {
+                });
                 showPersonDetails(person);
             }
         } catch (IOException e) {

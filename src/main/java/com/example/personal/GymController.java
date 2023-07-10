@@ -1,6 +1,7 @@
 package com.example.personal;
 
-import com.example.personal.ExerciseneweditController;
+
+
 import com.example.personal.BasicClass.Exercise;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
+
 import javafx.stage.Modality;
 
 import java.io.File;
@@ -36,6 +37,8 @@ public class GymController {
     @FXML
     private TableColumn<Exercise, Double> weightColumn;
 
+
+
     /**
      * Initializes the controller class. This method is automatically called after the fxml file has been loaded.
      */
@@ -49,16 +52,14 @@ public class GymController {
         weightColumn.setCellValueFactory(new PropertyValueFactory<>("weight"));
 
         File file = new File("src/main/resources/com/example/personal/exercises.json");
-        if (file != null) {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule());
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
 
-            try {
-                List<Exercise>  exercises = mapper.readValue(file, new TypeReference<>() {});
-                Extable.getItems().addAll(exercises);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            List<Exercise>  exercises = mapper.readValue(file, new TypeReference<>() {});
+            Extable.getItems().addAll(exercises);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -150,11 +151,9 @@ public class GymController {
     void save() {
         try {
             File file = new File("src/main/resources/com/example/personal/exercises.json");
-            if (file != null) {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.registerModule(new JavaTimeModule());
-                mapper.writerWithDefaultPrettyPrinter().writeValue(file, Extable.getItems());
-            }
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
+            mapper.writerWithDefaultPrettyPrinter().writeValue(file, Extable.getItems());
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
         }

@@ -64,7 +64,7 @@ public class DietController {
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Martedi");
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Mercoledi");
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Giovedi");
-        daysdata.add("src/main/resources/com/example/personal/DaysJson/Venerdi");
+        daysdata.add("src/main/resources/com/example/personal/DaysJson/Venerdi.json");
         daysdata.add("src/main/resources/com/example/personal/DaysJson/Sabato");
 
         NameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -77,33 +77,31 @@ public class DietController {
 
 
         MealTypeColumn.setComparator(sortTableView());
-        MealTypeColumn.setCellFactory(column -> {
-            return new TableCell<>() {
-                @Override
-                protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty);
+        MealTypeColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
 
-                    if (item == null || empty) {
-                        setText(null);
-                        setStyle("");
+                if (item == null || empty) {
+                    setText(null);
+                    setStyle("");
+                } else {
+                    setText(item);
+
+                    // Imposta lo stile CSS per il colore della cella
+                    if (item.equalsIgnoreCase("Colazione")) {
+                        setTextFill(Color.CHOCOLATE);
+                    } else if (item.equalsIgnoreCase("Pranzo")) {
+                        setTextFill(Color.RED);
+                    } else if (item.equalsIgnoreCase("Merenda")) {
+                        setTextFill(Color.DARKCYAN);
+                    } else if (item.equalsIgnoreCase("Cena")) {
+                        setTextFill(Color.BLUE);
                     } else {
-                        setText(item);
-
-                        // Imposta lo stile CSS per il colore della cella
-                        if (item.equalsIgnoreCase("Colazione")) {
-                            setTextFill(Color.CHOCOLATE);
-                        } else if (item.equalsIgnoreCase("Pranzo")) {
-                            setTextFill(Color.RED);
-                        } else if (item.equalsIgnoreCase("Merenda")) {
-                            setTextFill(Color.DARKCYAN);
-                        } else if (item.equalsIgnoreCase("Cena")) {
-                            setTextFill(Color.BLUE);
-                        } else {
-                            setTextFill(Color.BLACK);
-                        }
+                        setTextFill(Color.BLACK);
                     }
                 }
-            };
+            }
         });
 
 
@@ -178,7 +176,6 @@ public class DietController {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.registerModule(new JavaTimeModule());
                 mapper.writerWithDefaultPrettyPrinter().writeValue(file, diettable.getItems());
-            System.out.println(diettable.getItems().get(0).getMealType());
 
         } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Could not save data").showAndWait();
@@ -269,18 +266,12 @@ public class DietController {
     }
 
     private Comparator<String> sortTableView() {
-        return (item1, item2) -> {
-            if (item1.equals("Colazione")) {
-                return item2.equals("Colazione") ? 0 : -1;
-            } else if (item1.equals("Pranzo")) {
-                return item2.equals("Colazione") ? 1 : (item2.equals("Pranzo") ? 0 : -1);
-            } else if (item1.equals("Merenda")) {
-                return item2.equals("Cena") ? -1 : (item2.equals("Merenda") ? 0 : 1);
-            } else if (item1.equals("Cena")) {
-                return item2.equals("Cena") ? 0 : 1;
-            } else {
-                return 0;
-            }
+        return (item1, item2) -> switch (item1) {
+            case "Colazione" -> item2.equals("Colazione") ? 0 : -1;
+            case "Pranzo" -> item2.equals("Colazione") ? 1 : (item2.equals("Pranzo") ? 0 : -1);
+            case "Merenda" -> item2.equals("Cena") ? -1 : (item2.equals("Merenda") ? 0 : 1);
+            case "Cena" -> item2.equals("Cena") ? 0 : 1;
+            default -> 0;
         };
     }
 

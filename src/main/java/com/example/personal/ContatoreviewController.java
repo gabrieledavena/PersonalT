@@ -10,16 +10,17 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.animation.AnimationTimer;
+
 
 import java.io.*;
 import java.util.List;
-import java.util.Scanner;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.Enumeration;
-import java.util.concurrent.CountDownLatch;
+
+
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -28,14 +29,11 @@ public class ContatoreviewController extends Thread {
 
     @FXML
     private Label count;
-    @FXML
-    private Label finallabel;
 
     @FXML
-    private Label countrep;
-
+    private ImageView EndWorkOut;
     @FXML
-    private Label countserie;
+    private Button playbutton;
 
     @FXML
     private Label crono;
@@ -64,8 +62,6 @@ public class ContatoreviewController extends Thread {
 
     @FXML
     private Button previousButton;
-    @FXML
-    private Label cronolab;
     List<Exercise> exercises = null;
     boolean isRunning;
 
@@ -74,10 +70,12 @@ public class ContatoreviewController extends Thread {
     int seriecount = 0;
     int i = 0;
 
+    ImageView playimage = new ImageView(new Image("src/main/resources/com/example/personal/images/crono.jpg"));
+
     @FXML
     public void initialize() {
 
-        finallabel.setVisible(false);
+        EndWorkOut.setVisible(false);
         SerialPort[] ports = SerialPort.getCommPorts();
         System.out.println("Elenco porte seriale disponibili:");
         for (SerialPort port : ports) {
@@ -122,19 +120,17 @@ public class ContatoreviewController extends Thread {
                     }
 
                     Platform.runLater(() -> {
-                        count.setText(String.valueOf(variable) + "/" + String.valueOf(exercises.get(i).getRepetitions()));
+                        count.setText(variable + "/" + exercises.get(i).getRepetitions());
                         fermaCronometro();
                         resetcronometro();
                     });
-                    Platform.runLater(() -> {
-                        serie.setText(String.valueOf(seriecount) + "/" + String.valueOf(exercises.get(i).getSeries()));
-                    });
+                    Platform.runLater(() -> serie.setText(seriecount + "/" + exercises.get(i).getSeries()));
                     Platform.runLater(() -> {
                         if (variable > exercises.get(i).getRepetitions() - 1) {
                             variable = 0;
                             seriecount++;
                             if (seriecount == exercises.get(i).getSeries()) {
-                                serie.setText(String.valueOf(seriecount) + "/" + String.valueOf(exercises.get(i).getSeries()));
+                                serie.setText(seriecount + "/" + exercises.get(i).getSeries());
                                 avviaCronometro();
                             }
 
@@ -145,7 +141,7 @@ public class ContatoreviewController extends Thread {
 
                                     next();
                                 } else {
-                                    finallabel.setVisible(true);
+                                    EndWorkOut.setVisible(true);
                                 }
 
 
@@ -154,26 +150,26 @@ public class ContatoreviewController extends Thread {
                     });
                 }
             }
+
         });
 
 
         File file = new File("src/main/resources/com/example/personal/exercises.json");
-        if (file != null) {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule());
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
 
-            try {
-                exercises = mapper.readValue(file, new TypeReference<>() {
-                });
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            exercises = mapper.readValue(file, new TypeReference<>() {
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         showex(getexercisefrom(exercises));
         crono.setText("0 : 00");
 
 
         previousButton.setDisable(true);
+        playbutton.setGraphic(playimage);
     }
 
     public void showex(Exercise esercizi) {
