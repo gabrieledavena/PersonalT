@@ -176,8 +176,6 @@ public class ContatoreviewController extends Thread {
 
     Exercise getexercisefrom(List<Exercise> exercises) {
         return exercises.get(i);
-
-
     }
 
 

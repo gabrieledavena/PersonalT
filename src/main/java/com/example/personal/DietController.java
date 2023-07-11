@@ -198,7 +198,7 @@ public class DietController {
         } catch (NoSuchElementException e) {
             showNoMealSelectedAlert();
         }
-
+        statistics();
         SaveButton.setStyle("-fx-border-color: #FF0000; -fx-border-width: 1.5");
     }
 
