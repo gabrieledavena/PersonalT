@@ -1,49 +1,49 @@
 [ {
   "name" : "uovo fritto",
   "mealtype" : "Colazione",
-  "protein" : 0,
-  "calories" : 0,
-  "fat" : 0,
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
   "quantity" : 1.0,
   "mealType" : "Colazione"
 }, {
   "name" : "PANE",
   "mealtype" : "Colazione",
-  "protein" : 0,
-  "calories" : 0,
-  "fat" : 0,
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
   "quantity" : 1.0,
   "mealType" : "Colazione"
 }, {
   "name" : "Caffè",
   "mealtype" : "Colazione",
-  "protein" : 0,
-  "calories" : 0,
-  "fat" : 0,
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
   "quantity" : 1.0,
   "mealType" : "Colazione"
 }, {
   "name" : "Mela",
   "mealtype" : "Merenda",
-  "protein" : 0,
-  "calories" : 0,
-  "fat" : 0,
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
   "quantity" : 1.0,
   "mealType" : "Merenda"
 }, {
   "name" : "Mandorla",
   "mealtype" : "Merenda",
-  "protein" : 0,
-  "calories" : 0,
-  "fat" : 0,
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
   "quantity" : 7.0,
   "mealType" : "Merenda"
 }, {
   "name" : "Pesce",
   "mealtype" : "Cena",
-  "protein" : 0,
-  "calories" : 0,
-  "fat" : 0,
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
   "quantity" : 200.0,
   "mealType" : "Cena"
 } ]

@@ -23,22 +23,6 @@
   "quantity" : 1.0,
   "mealType" : "Colazione"
 }, {
-  "name" : "Mela",
-  "mealtype" : "Merenda",
-  "protein" : 0.0,
-  "calories" : 0.0,
-  "fat" : 0.0,
-  "quantity" : 1.0,
-  "mealType" : "Merenda"
-}, {
-  "name" : "Mandorla",
-  "mealtype" : "Merenda",
-  "protein" : 0.0,
-  "calories" : 0.0,
-  "fat" : 0.0,
-  "quantity" : 7.0,
-  "mealType" : "Merenda"
-}, {
   "name" : "Pasta integrale",
   "mealtype" : "Pranzo",
   "protein" : 0.0,
@@ -54,6 +38,22 @@
   "fat" : 0.0,
   "quantity" : 200.0,
   "mealType" : "Pranzo"
+}, {
+  "name" : "Mela",
+  "mealtype" : "Merenda",
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
+  "quantity" : 1.0,
+  "mealType" : "Merenda"
+}, {
+  "name" : "Mandorla",
+  "mealtype" : "Merenda",
+  "protein" : 0.0,
+  "calories" : 0.0,
+  "fat" : 0.0,
+  "quantity" : 7.0,
+  "mealType" : "Merenda"
 }, {
   "name" : "Pesce",
   "mealtype" : "Cena",

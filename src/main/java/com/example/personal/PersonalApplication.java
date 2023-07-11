@@ -19,7 +19,7 @@ public class PersonalApplication extends Application {
         stage.setMinHeight(450);
         stage.setMaxWidth(1150);
         stage.setMaxHeight(450);
-        stage.getIcons().add(new Image("com/example/personal/images/shrek avatar.jpg"));
+        stage.getIcons().add(new Image("com/example/personal/images/fotoapp.jpeg"));
         stage.setTitle("Personal Trainer");
         stage.setScene(scene);
         stage.show();
