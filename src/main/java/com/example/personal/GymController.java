@@ -61,6 +61,7 @@ public class GymController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        Extable.getSortOrder().add(muscleGroupColumn);
     }
 
     ObservableList<Exercise> getExerciseData() {
@@ -109,7 +110,7 @@ public class GymController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        Extable.getSortOrder().add(muscleGroupColumn);
     }
 
     public void remove() {
@@ -145,6 +146,7 @@ public class GymController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Extable.getSortOrder().add(muscleGroupColumn);
     }
 
     @FXML

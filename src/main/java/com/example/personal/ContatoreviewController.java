@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-
 import java.io.*;
 import java.util.List;
 
@@ -32,8 +31,6 @@ public class ContatoreviewController extends Thread {
 
     @FXML
     private ImageView EndWorkOut;
-    @FXML
-    private Button playbutton;
 
     @FXML
     private Label crono;
@@ -69,8 +66,6 @@ public class ContatoreviewController extends Thread {
     int variable = 0;
     int seriecount = 0;
     int i = 0;
-
-    ImageView playimage = new ImageView(new Image("src/main/resources/com/example/personal/images/crono.jpg"));
 
     @FXML
     public void initialize() {
@@ -169,7 +164,6 @@ public class ContatoreviewController extends Thread {
 
 
         previousButton.setDisable(true);
-        playbutton.setGraphic(playimage);
     }
 
     public void showex(Exercise esercizi) {

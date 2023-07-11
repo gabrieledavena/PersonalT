@@ -1,13 +1,67 @@
 [ {
+  "name" : "Bicipiti",
+  "muscleGroup" : "Braccia",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 16.0
+}, {
+  "name" : "Tricipiti",
+  "muscleGroup" : "Braccia",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 30.0
+}, {
+  "name" : "Squat",
+  "muscleGroup" : "Gambe",
+  "series" : 2,
+  "repetitions" : 6,
+  "weight" : 100.0
+}, {
+  "name" : "Leg Press",
+  "muscleGroup" : "Gambe",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 120.0
+}, {
+  "name" : "Leg Extension",
+  "muscleGroup" : "Gambe",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 40.0
+}, {
   "name" : "Panca piana",
-  "muscleGroup" : "Glutei",
+  "muscleGroup" : "Petto",
   "series" : 1,
   "repetitions" : 2,
-  "weight" : 5.0
+  "weight" : 60.0
 }, {
   "name" : "Flessioni",
   "muscleGroup" : "Petto",
   "series" : 2,
   "repetitions" : 3,
   "weight" : 5.0
+}, {
+  "name" : "Panca Inclinata",
+  "muscleGroup" : "Petto",
+  "series" : 3,
+  "repetitions" : 10,
+  "weight" : 35.0
+}, {
+  "name" : "Lat Machine",
+  "muscleGroup" : "Schiena",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 70.0
+}, {
+  "name" : "Military Press",
+  "muscleGroup" : "Spalle",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 50.0
+}, {
+  "name" : "Alzate Frontali",
+  "muscleGroup" : "Spalle",
+  "series" : 4,
+  "repetitions" : 12,
+  "weight" : 13.0
 } ]

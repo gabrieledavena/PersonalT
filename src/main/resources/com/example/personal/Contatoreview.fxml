@@ -79,10 +79,10 @@
             <Button fx:id="nextButton" layoutX="455.0" layoutY="87.0" mnemonicParsing="false" onAction="#next" prefHeight="7.0" prefWidth="56.0" text="Next" />
             <Button fx:id="previousButton" layoutX="98.0" layoutY="87.0" mnemonicParsing="false" onAction="#previous" text="Previous" />
             <Label layoutX="256.0" layoutY="92.0" text="Progresso esercizi" />
-            <Button fx:id="playbutton" layoutX="183.0" layoutY="298.0" mnemonicParsing="false" onAction="#avviaCronometro" text="Avvia" />
-            <Button layoutX="370.0" layoutY="296.0" mnemonicParsing="false" onAction="#fermaCronometro" text="Ferma" />
-            <Button layoutX="278.0" layoutY="372.0" mnemonicParsing="false" onAction="#resetcronometro" text="Reset" />
-            <ImageView fx:id="EndWorkOut" fitHeight="258.0" fitWidth="293.0" layoutX="154.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="playbutton" layoutX="183.0" layoutY="298.0" mnemonicParsing="false" onAction="#avviaCronometro" style="-fx-background-radius: 1000;" text="Avvia" />
+            <Button layoutX="370.0" layoutY="296.0" mnemonicParsing="false" onAction="#fermaCronometro" style="-fx-background-radius: 1000;" text="Ferma" />
+            <Button layoutX="278.0" layoutY="372.0" mnemonicParsing="false" onAction="#resetcronometro" style="-fx-background-radius: 1000;" text="Reset" />
+            <ImageView fx:id="EndWorkOut" fitHeight="277.0" fitWidth="351.0" layoutX="155.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/musculoso-homero.gif" />
                </image>
